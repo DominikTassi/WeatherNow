@@ -7,13 +7,13 @@ import hu.weathernow.app.model.Weather;
 
 import java.util.Collection;
 
-public interface Weatherdao {
+public interface WeatherDAO {
     public Weather createWeather(Collection<Category> categories, Town town, double temperature);
 
     public Collection<Weather> getByUser(User user);
 
     public boolean updateWeather(Weather weather);
 
-    public void deleteWeather(int i);
-    public void deleteWeather(Weather weather);
+    public boolean deleteWeather(int i);
+    public boolean deleteWeather(Weather weather);
 }

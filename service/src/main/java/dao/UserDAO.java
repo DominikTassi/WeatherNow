@@ -6,7 +6,7 @@ import hu.weathernow.app.exceptions.StorageException;
 import hu.weathernow.app.exceptions.StorageNotAvaibleException;
 import hu.weathernow.app.model.User;
 
-public interface Userdao {
+public interface UserDAO {
 
     User createUser(String name ) throws StorageNotAvaibleException, AlreadyExistingException, StorageException;
 
