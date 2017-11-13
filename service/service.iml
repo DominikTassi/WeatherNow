@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: hu.weathernow.app:core:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: hu.weathernow.app:core:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="core" />
   </component>
 </module>
