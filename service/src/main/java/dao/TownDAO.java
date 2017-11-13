@@ -7,10 +7,4 @@ import hu.weathernow.app.model.Town;
 
 public interface TownDAO {
     public Town getTown(int id) throws StorageException, StorageNotAvaibleException, NotFoundException;
-
-    public boolean updateTown(int id);
-    public boolean updateTown(Town town);
-
-    public boolean deleteTown(int id);
-    public boolean deleteTown(Town town);
 }

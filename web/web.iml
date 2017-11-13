@@ -14,5 +14,6 @@
     <orderEntry type="module" module-name="service" />
     <orderEntry type="library" name="Maven: hu.weathernow.app:core:1.0-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="dao" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.6" level="project" />
   </component>
 </module>
