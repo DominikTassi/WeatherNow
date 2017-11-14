@@ -10,6 +10,7 @@ import hu.weathernow.app.model.Weather;
 
 import java.sql.*;
 import java.util.Collection;
+import java.util.HashSet;
 
 public class WeatherDAOmysql implements WeatherDAO {
     private Connection conn;
@@ -60,11 +61,31 @@ public class WeatherDAOmysql implements WeatherDAO {
     }
 
     @Override
-    public Collection<Weather> getByUser(User user) {
-        return null;
+    public Collection<Weather> getByUser(User user) throws StorageNotAvaibleException, StorageException {
+        int id;
+        Collection<Weather> weather = new HashSet<Weather>();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT user FROM weather WHERE user = ?");
+            ps.setString(1, user.getName());
+            ResultSet rs = ps.executeQuery();
+            boolean isExist = rs.next();
+            if (isExist) {
+                id = rs.getInt("id");
+            } else {
+                throw new NotFoundException();
+            }
+
+        } catch (CommunicationsException e) {
+            throw new StorageNotAvaibleException();
+        } catch (SQLException e) {
+            throw new StorageException();
+        } catch (NotFoundException e1) {
+            e1.printStackTrace();
+        }
+        return weather;
     }
 
-    @Override
+        @Override
     public boolean updateWeather(Weather weather) throws StorageNotAvaibleException, AlreadyExistingException, StorageException {
         String updateSQl = "UPDATE weather SET user = ?, town = ?, categories = ?, temperature = ?, time = ? WHERE id = ?";
         try{

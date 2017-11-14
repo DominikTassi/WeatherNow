@@ -14,7 +14,7 @@ import java.util.Collection;
 public interface WeatherDAO {
     public Weather createWeather(User user, Collection<Category> categories, Town town, double temperature) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException;
 
-    public Collection<Weather> getByUser(User user);
+    public Collection<Weather> getByUser(User user) throws StorageNotAvaibleException, StorageException;
 
     public boolean updateWeather(Weather weather) throws StorageNotAvaibleException, AlreadyExistingException, StorageException;
 

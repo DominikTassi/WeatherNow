@@ -21,8 +21,8 @@
       <file leaf-file-name="UserDAOmysql.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dao/src/main/java/mysql/UserDAOmysql.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="152" selection-end-column="20" />
+            <state relative-caret-position="493">
+              <caret line="107" column="9" lean-forward="true" selection-start-line="88" selection-start-column="12" selection-end-line="107" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1510588150909" expanded="true" signature="677:715" ph="Insert into user... " />
@@ -38,15 +38,17 @@
       <file leaf-file-name="WeatherDAOmysql.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dao/src/main/java/mysql/WeatherDAOmysql.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1487">
-              <caret line="129" column="42" lean-forward="false" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
+            <state relative-caret-position="-983">
+              <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1510648982494" expanded="true" signature="740:770" ph="INSERT into weather... " />
-                <marker date="1510648982494" expanded="true" signature="740:790" ph="INSERT into weather... " />
-                <marker date="1510648982494" expanded="true" signature="2396:2489" ph="UPDATE weath... " />
-                <marker date="1510648982494" expanded="true" signature="3606:3638" ph="DELETE FROM " />
-                <marker date="1510648982494" expanded="true" signature="4332:4366" ph="DELETE FROM " />
+                <element signature="e#2339#2348#0" expanded="true" />
+                <marker date="1510649713009" expanded="true" signature="766:796" ph="INSERT into weather... " />
+                <marker date="1510649713009" expanded="true" signature="766:816" ph="INSERT into weather... " />
+                <marker date="1510649713009" expanded="true" signature="2424:2463" ph="SELECT user weather" />
+                <marker date="1510649713009" expanded="true" signature="3214:3307" ph="UPDATE weath... " />
+                <marker date="1510649713009" expanded="true" signature="4424:4456" ph="DELETE FROM " />
+                <marker date="1510649713009" expanded="true" signature="5150:5184" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -172,7 +174,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="120" />
     <option name="y" value="24" />
     <option name="width" value="1394" />
@@ -459,15 +461,15 @@
       <workItem from="1510581460439" duration="1246000" />
       <workItem from="1510586439933" duration="917000" />
       <workItem from="1510587410497" duration="2667000" />
-      <workItem from="1510642845741" duration="5981000" />
+      <workItem from="1510642845741" duration="7303000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26387000" />
+    <option name="totallyTimeSpent" value="27709000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -871,8 +873,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/src/main/java/mysql/UserDAOmysql.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="152" selection-end-column="20" />
+        <state relative-caret-position="493">
+          <caret line="107" column="9" lean-forward="true" selection-start-line="88" selection-start-column="12" selection-end-line="107" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1510588150909" expanded="true" signature="677:715" ph="Insert into user... " />
@@ -886,15 +888,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/src/main/java/mysql/WeatherDAOmysql.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1487">
-          <caret line="129" column="42" lean-forward="false" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
+        <state relative-caret-position="-983">
+          <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1510648982494" expanded="true" signature="740:770" ph="INSERT into weather... " />
-            <marker date="1510648982494" expanded="true" signature="740:790" ph="INSERT into weather... " />
-            <marker date="1510648982494" expanded="true" signature="2396:2489" ph="UPDATE weath... " />
-            <marker date="1510648982494" expanded="true" signature="3606:3638" ph="DELETE FROM " />
-            <marker date="1510648982494" expanded="true" signature="4332:4366" ph="DELETE FROM " />
+            <element signature="e#2339#2348#0" expanded="true" />
+            <marker date="1510649713009" expanded="true" signature="766:796" ph="INSERT into weather... " />
+            <marker date="1510649713009" expanded="true" signature="766:816" ph="INSERT into weather... " />
+            <marker date="1510649713009" expanded="true" signature="2424:2463" ph="SELECT user weather" />
+            <marker date="1510649713009" expanded="true" signature="3214:3307" ph="UPDATE weath... " />
+            <marker date="1510649713009" expanded="true" signature="4424:4456" ph="DELETE FROM " />
+            <marker date="1510649713009" expanded="true" signature="5150:5184" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
