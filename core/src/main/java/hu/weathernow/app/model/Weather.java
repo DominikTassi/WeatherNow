@@ -3,8 +3,9 @@ package hu.weathernow.app.model;
 import hu.weathernow.app.exceptions.*;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.util.Collection;
+import java.util.Date;
 
 public class Weather {
     private int id;
@@ -12,9 +13,10 @@ public class Weather {
     private Town town;
     private Collection<Category> category;
     private double temperature;
-    private LocalDateTime time;
 
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+
+    Date in = new Date();
+    private LocalDateTime time = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
 
     public Weather(int id, User user, Town town, Collection<Category> category, double temperature) throws NoUserException, NoTownException, NoCategoryException, EmptyCategoryException{
         if (user == null)
@@ -56,8 +58,8 @@ public class Weather {
         return temperature;
     }
 
-    public LocalDateTime getTime() {
-        return time;
+    public Date getTime() {
+        return Date.from(time.atZone(ZoneId.systemDefault()).toInstant());
     }
 
     public void setUser(User user) {
@@ -76,7 +78,6 @@ public class Weather {
         this.temperature = temperature;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -86,12 +87,12 @@ public class Weather {
 
         if (id != weather.id) return false;
         if (Double.compare(weather.temperature, temperature) != 0) return false;
-        if (!user.equals(weather.user)) return false;
-        if (!town.equals(weather.town)) return false;
-        if (!category.equals(weather.category)) return false;
-        if (!time.equals(weather.time)) return false;
-        return dtf.equals(weather.dtf);
+        if (user != null ? !user.equals(weather.user) : weather.user != null) return false;
+        if (town != null ? !town.equals(weather.town) : weather.town != null) return false;
+        if (category != null ? !category.equals(weather.category) : weather.category != null) return false;
+        return time != null ? time.equals(weather.time) : weather.time == null;
     }
+
 }
 
 

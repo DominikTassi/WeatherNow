@@ -9,7 +9,7 @@ import java.util.Collection;
 
 
 public interface WeatherService {
-    public Weather createWeather(Collection<Category> categories, Town town, double temperature);
+    public Weather createWeather(User user, Collection<Category> categories, Town town, double temperature);
 
     public Collection<Weather> getByUser(User user);
 
