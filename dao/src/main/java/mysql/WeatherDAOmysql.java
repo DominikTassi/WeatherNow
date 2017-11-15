@@ -18,7 +18,7 @@ public class WeatherDAOmysql implements WeatherDAO {
 
     @Override
     public Weather createWeather(User user, Collection<Category> categories, Town town, double temperature) throws StorageException, StorageNotAvaibleException, NotFoundException, AlreadyExistingException {
-        String insertSQL = "INSERT into weather VALUES (?), (?), (?), (?), (?)";
+        String insertSQL = "INSERT into weather VALUES (?, ?, ?, ?, ?)";
         int last_id = 0;
         Weather weather = null;
 
