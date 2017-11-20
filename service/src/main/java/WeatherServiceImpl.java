@@ -1,8 +1,4 @@
 import dao.WeatherDAO;
-import hu.weathernow.app.exceptions.AlreadyExistingException;
-import hu.weathernow.app.exceptions.NotFoundException;
-import hu.weathernow.app.exceptions.StorageException;
-import hu.weathernow.app.exceptions.StorageNotAvaibleException;
 import hu.weathernow.app.model.Category;
 import hu.weathernow.app.model.Town;
 import hu.weathernow.app.model.User;

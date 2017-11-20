@@ -1,8 +1,8 @@
 import dao.UserDAO;
-import hu.weathernow.app.exceptions.AlreadyExistingException;
 import hu.weathernow.app.exceptions.NotFoundException;
 import hu.weathernow.app.exceptions.StorageException;
 import hu.weathernow.app.exceptions.StorageNotAvaibleException;
+import hu.weathernow.app.exceptions.UserDIsOccupiedException;
 import hu.weathernow.app.model.User;
 
 public class UserServiceImpl implements UserDAO {
@@ -10,23 +10,23 @@ public class UserServiceImpl implements UserDAO {
     private UserDAO userDAO = null;
     public UserServiceImpl(UserDAO userDAO){this.userDAO = userDAO;}
 
-    public User createUser(String name) throws StorageNotAvaibleException, AlreadyExistingException, StorageException {
-        return userDAO.createUser(name);
+    public void createUser(User user) throws UserDIsOccupiedException {
+
     }
 
-    public User getUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException {
+    public User getUser(int id) throws UserDIsOccupiedException {
         return userDAO.getUser(id);
     }
 
-    public User getUser(String name) throws StorageNotAvaibleException, NotFoundException, StorageException {
+    public User getUser(String name) throws UserDIsOccupiedException {
         return userDAO.getUser(name);
     }
 
-    public boolean deleteUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException, AlreadyExistingException {
+    public boolean deleteUser(int id) {
         return userDAO.deleteUser(id);
     }
 
-    public boolean deleteUser(User user) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException {
+    public boolean deleteUser(User user){
         return userDAO.deleteUser(user);
     }
 }

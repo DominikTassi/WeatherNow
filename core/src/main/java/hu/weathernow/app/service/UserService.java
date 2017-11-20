@@ -5,15 +5,15 @@ import hu.weathernow.app.model.User;
 
 public interface UserService {
 
-    void createUser(User user) throws StorageNotAvaibleException, AlreadyExistingException, StorageException, UserDIsOccupiedException;
+    void createUser(User user) throws UserDIsOccupiedException;
 
-    User getUser( int id ) throws StorageNotAvaibleException, StorageException, NotFoundException;
+    User getUser( int id );
 
-    User getUser( String name ) throws StorageNotAvaibleException, NotFoundException, StorageException;
+    User getUser( String name );
 
-    boolean deleteUser (int id ) throws StorageNotAvaibleException, StorageException, NotFoundException, AlreadyExistingException;
+    boolean deleteUser (int id );
 
-    boolean deleteUser( User user ) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException;
+    boolean deleteUser( User user );
 
 
 }
