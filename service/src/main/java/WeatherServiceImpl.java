@@ -1,4 +1,8 @@
 import dao.WeatherDAO;
+import hu.weathernow.app.exceptions.AlreadyExistingException;
+import hu.weathernow.app.exceptions.NotFoundException;
+import hu.weathernow.app.exceptions.StorageException;
+import hu.weathernow.app.exceptions.StorageNotAvaibleException;
 import hu.weathernow.app.model.Category;
 import hu.weathernow.app.model.Town;
 import hu.weathernow.app.model.User;
@@ -8,25 +12,24 @@ import java.util.Collection;
 
 public class WeatherServiceImpl implements WeatherDAO {
     private WeatherDAO weatherDAO = null;
-    public WeatherServiceImpl(WeatherDAO weatherDAO){ this.weatherDAO = weatherDAO; }
 
-    public Weather createWeather(Collection<Category> categories, Town town, double temperature) {
-        return weatherDAO.createWeather(categories, town, temperature);
+    public Weather createWeather(User user, Collection<Category> categories, Town town, double temperature) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException {
+        return null;
     }
 
-    public Collection<Weather> getByUser(User user) {
-        return weatherDAO.getByUser(user);
+    public Collection<Weather> getAllWeather() throws StorageNotAvaibleException, StorageException {
+        return null;
     }
 
-    public boolean updateWeather(Weather weather) {
-        return weatherDAO.updateWeather(weather);
+    public boolean updateWeather(Weather weather) throws StorageNotAvaibleException, AlreadyExistingException, StorageException {
+        return false;
     }
 
-    public boolean deleteWeather(int i) {
-        return weatherDAO.deleteWeather(i);
+    public boolean deleteWeather(int i) throws StorageNotAvaibleException, StorageException {
+        return false;
     }
 
-    public boolean deleteWeather(Weather weather) {
-        return weatherDAO.deleteWeather(weather);
+    public boolean deleteWeather(Weather weather) throws StorageNotAvaibleException, StorageException {
+        return false;
     }
 }

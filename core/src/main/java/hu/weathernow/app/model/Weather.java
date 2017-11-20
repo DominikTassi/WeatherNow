@@ -38,6 +38,7 @@ public class Weather {
         this.time = LocalDateTime.now();
     }
 
+
     public int getId() {
         return id;
     }

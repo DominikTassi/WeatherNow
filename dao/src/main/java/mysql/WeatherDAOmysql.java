@@ -61,26 +61,17 @@ public class WeatherDAOmysql implements WeatherDAO {
     }
 
     @Override
-    public Collection<Weather> getByUser(User user) throws StorageNotAvaibleException, StorageException {
+    public Collection<Weather> getAllWeather() throws StorageNotAvaibleException, StorageException {
         int id;
         Collection<Weather> weather = new HashSet<Weather>();
         try {
-            PreparedStatement ps = conn.prepareStatement("SELECT user FROM weather WHERE user = ?");
-            ps.setString(1, user.getName());
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM weather");
             ResultSet rs = ps.executeQuery();
-            boolean isExist = rs.next();
-            if (isExist) {
-                id = rs.getInt("id");
-            } else {
-                throw new NotFoundException();
-            }
 
         } catch (CommunicationsException e) {
             throw new StorageNotAvaibleException();
         } catch (SQLException e) {
             throw new StorageException();
-        } catch (NotFoundException e1) {
-            e1.printStackTrace();
         }
         return weather;
     }

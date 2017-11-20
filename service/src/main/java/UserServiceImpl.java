@@ -22,11 +22,11 @@ public class UserServiceImpl implements UserDAO {
         return userDAO.getUser(name);
     }
 
-    public boolean deleteUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException {
+    public boolean deleteUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException, AlreadyExistingException {
         return userDAO.deleteUser(id);
     }
 
-    public boolean deleteUser(User user) throws StorageNotAvaibleException, NotFoundException, StorageException {
+    public boolean deleteUser(User user) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException {
         return userDAO.deleteUser(user);
     }
 }
