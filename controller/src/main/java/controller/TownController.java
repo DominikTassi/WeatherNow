@@ -14,12 +14,13 @@ public class TownController {
     TownService townService;
 
     @RequestMapping(value = "/getTown/{id}")
-    public ModelAndView getTown(@PathVariable(value = "id")
+    public ModelAndView getUser(@PathVariable(value = "id")
                                     int id)
             throws TownNotFoundException, StorageNotAvaibleException, StorageException, NotFoundException {
         ModelAndView mav = new ModelAndView("towndata");
         mav.addObject("town",townService.getTown(id));
         return mav;
     }
+
 
 }
