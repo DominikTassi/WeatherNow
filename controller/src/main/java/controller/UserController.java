@@ -14,7 +14,7 @@ public class UserController {
 
     @RequestMapping(value = "/getUser/{id}")
     public ModelAndView getUserById(@PathVariable(value = "i") int i)
-            throws NoUserException, StorageNotAvaibleException, StorageException, NotFoundException {
+            throws NoUserException{
         ModelAndView mav = new ModelAndView("userdata");
         mav.addObject("user",userService.getUser(i));
         return mav;
@@ -23,7 +23,7 @@ public class UserController {
 
     @RequestMapping(value = "/getUser/{id}")
     public ModelAndView getUserByName(@PathVariable(value = "name") String name)
-            throws NoUserException, StorageNotAvaibleException, StorageException, NotFoundException {
+            throws NoUserException{
         ModelAndView mav = new ModelAndView("userdata");
         mav.addObject("user",userService.getUser(name));
         return mav;

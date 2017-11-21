@@ -5,9 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dao.TownDAO;
-import hu.weathernow.app.exceptions.NotFoundException;
-import hu.weathernow.app.exceptions.StorageException;
-import hu.weathernow.app.exceptions.StorageNotAvaibleException;
 import hu.weathernow.app.exceptions.TownNotFoundException;
 import hu.weathernow.app.model.Town;
 
