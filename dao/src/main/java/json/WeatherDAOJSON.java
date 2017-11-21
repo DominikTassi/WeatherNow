@@ -38,7 +38,7 @@ public class WeatherDAOJSON implements WeatherDAO{
         }
     }
     @Override
-    public void createWeather(Weather weather) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException, WeatherIDIsOccupiedException {
+    public void createWeather(Weather weather) throws WeatherIDIsOccupiedException {
         Collection<Weather> weathers = new HashSet<Weather>();
         boolean uniqueId = true;
         for(Weather w : weathers){
@@ -58,7 +58,7 @@ public class WeatherDAOJSON implements WeatherDAO{
     }
 
     @Override
-    public Collection<Weather> getAllWeather() throws StorageNotAvaibleException, StorageException {
+    public Collection<Weather> getAllWeather() {
         Collection<Weather> weathers = new HashSet<Weather>();
         try {
             System.out.println(jsonfile.getAbsoluteFile());
@@ -73,17 +73,17 @@ public class WeatherDAOJSON implements WeatherDAO{
     }
 
     @Override
-    public boolean updateWeather(Weather weather) throws StorageNotAvaibleException, AlreadyExistingException, StorageException {
+    public boolean updateWeather(Weather weather)  {
         return false;
     }
 
     @Override
-    public boolean deleteWeather(int i) throws StorageNotAvaibleException, StorageException {
+    public boolean deleteWeather(int i) {
         return false;
     }
 
     @Override
-    public boolean deleteWeather(Weather weather) throws StorageNotAvaibleException, StorageException {
+    public boolean deleteWeather(Weather weather) {
         return false;
     }
 }

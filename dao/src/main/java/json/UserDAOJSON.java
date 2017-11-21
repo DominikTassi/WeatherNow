@@ -41,7 +41,7 @@ public class UserDAOJSON implements UserDAO{
 
 
 
-    public void createUser(User user) throws StorageNotAvaibleException, AlreadyExistingException, StorageException, UserDIsOccupiedException {
+    public void createUser(User user) throws UserDIsOccupiedException {
         Collection<User> users = new HashSet<User>();
         boolean uniqueId = true;
         for(User u : users){
@@ -61,7 +61,7 @@ public class UserDAOJSON implements UserDAO{
     }
 
     @Override
-    public User getUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException, UserDIsOccupiedException {
+    public User getUser(int id) throws UserDIsOccupiedException {
         Collection<User> users = new HashSet<User>();
         try{
             users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
@@ -80,7 +80,7 @@ public class UserDAOJSON implements UserDAO{
 
 
     @Override
-    public User getUser(String name) throws StorageNotAvaibleException, NotFoundException, StorageException, UserDIsOccupiedException {
+    public User getUser(String name) throws UserDIsOccupiedException {
         Collection<User> users = new HashSet<User>();
         try{
             users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
@@ -98,12 +98,12 @@ public class UserDAOJSON implements UserDAO{
     }
 
     @Override
-    public boolean deleteUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException, AlreadyExistingException {
+    public boolean deleteUser(int id){
         return false;
     }
 
     @Override
-    public boolean deleteUser(User user) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException {
+    public boolean deleteUser(User user){
         return false;
     }
 }

@@ -44,7 +44,7 @@ public class TownDAOJSON implements TownDAO{
     }
 
 
-    public Town getTown(int id) throws StorageException, StorageNotAvaibleException, NotFoundException, TownNotFoundException {
+    public Town getTown(int id) throws TownNotFoundException {
         Collection<Town> towns = new HashSet<Town>();
         try{
             towns = mapper.readValue(jsonfile, new TypeReference<HashSet<Town>>(){});
