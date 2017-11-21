@@ -1,4 +1,5 @@
 import dao.WeatherDAO;
+import hu.weathernow.app.exceptions.*;
 import hu.weathernow.app.model.Category;
 import hu.weathernow.app.model.Town;
 import hu.weathernow.app.model.User;
@@ -9,8 +10,9 @@ import java.util.Collection;
 public class WeatherServiceImpl implements WeatherDAO {
     private WeatherDAO weatherDAO = null;
 
-    public Weather createWeather(User user, Collection<Category> categories, Town town, double temperature) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException {
-        return null;
+
+    public void createWeather(Weather weather) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException, WeatherIDIsOccupiedException {
+
     }
 
     public Collection<Weather> getAllWeather() throws StorageNotAvaibleException, StorageException {
