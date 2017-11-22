@@ -11,23 +11,23 @@ public class WeatherServiceImpl implements WeatherDAO {
     private WeatherDAO weatherDAO = null;
 
 
-    public void createWeather(Weather weather) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException, WeatherIDIsOccupiedException {
+    public void createWeather(Weather weather)throws WeatherIDIsOccupiedException {
 
     }
 
-    public Collection<Weather> getAllWeather() throws StorageNotAvaibleException, StorageException {
+    public Collection<Weather> getAllWeather(){
         return null;
     }
 
-    public boolean updateWeather(Weather weather) throws StorageNotAvaibleException, AlreadyExistingException, StorageException {
+    public boolean updateWeather(Weather weather){
         return false;
     }
 
-    public boolean deleteWeather(int i) throws StorageNotAvaibleException, StorageException {
+    public boolean deleteWeather(int i){
         return false;
     }
 
-    public boolean deleteWeather(Weather weather) throws StorageNotAvaibleException, StorageException {
+    public boolean deleteWeather(Weather weather){
         return false;
     }
 }

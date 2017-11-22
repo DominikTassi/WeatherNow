@@ -9,12 +9,12 @@ import hu.weathernow.app.model.Weather;
 import java.util.Collection;
 
 public interface WeatherDAO {
-    public void createWeather(Weather weather) throws StorageNotAvaibleException, NotFoundException, StorageException, AlreadyExistingException, WeatherIDIsOccupiedException;
+    public void createWeather(Weather weather) throws WeatherIDIsOccupiedException;
 
-    public Collection<Weather> getAllWeather() throws StorageNotAvaibleException, StorageException;
+    public Collection<Weather> getAllWeather();
 
-    public boolean updateWeather(Weather weather) throws StorageNotAvaibleException, AlreadyExistingException, StorageException;
+    public boolean updateWeather(Weather weather);
 
-    public boolean deleteWeather(int i) throws StorageNotAvaibleException, StorageException;
-    public boolean deleteWeather(Weather weather) throws StorageNotAvaibleException, StorageException;
+    public boolean deleteWeather(int i);
+    public boolean deleteWeather(Weather weather);
 }
