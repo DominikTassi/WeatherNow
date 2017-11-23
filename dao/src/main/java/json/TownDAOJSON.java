@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dao.TownDAO;
-import hu.weathernow.app.exceptions.TownNotFoundException;
-import hu.weathernow.app.model.Town;
+import exceptions.TownNotFoundException;
+import model.Town;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 
-public class TownDAOJSON implements TownDAO{
+public class TownDAOJSON implements TownDAO {
 
     ObjectMapper mapper;
     File jsonfile;

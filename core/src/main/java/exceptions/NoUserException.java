@@ -1,4 +1,4 @@
-package hu.weathernow.app.exceptions;
+package exceptions;
 
 public class NoUserException extends Exception {
 

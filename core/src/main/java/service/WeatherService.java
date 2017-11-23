@@ -1,9 +1,7 @@
-package hu.weathernow.app.service;
+package service;
 
-import hu.weathernow.app.model.Category;
-import hu.weathernow.app.model.Town;
-import hu.weathernow.app.model.User;
-import hu.weathernow.app.model.Weather;
+
+import model.Weather;
 
 import java.util.Collection;
 

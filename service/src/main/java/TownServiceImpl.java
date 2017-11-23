@@ -1,6 +1,7 @@
 import dao.TownDAO;
-import hu.weathernow.app.exceptions.TownNotFoundException;
-import hu.weathernow.app.model.Town;
+import exceptions.TownNotFoundException;
+import model.Town;
+
 
 public class TownServiceImpl implements TownDAO {
     private TownDAO userDAO = null;

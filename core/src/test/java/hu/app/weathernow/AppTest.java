@@ -1,4 +1,4 @@
-package hu.weathernow.app;
+package hu.app.weathernow;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

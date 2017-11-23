@@ -1,17 +1,18 @@
 package dao;
 
-import hu.weathernow.app.exceptions.*;
-import hu.weathernow.app.model.User;
+
+import exceptions.UserIDIsOccupiedException;
+import model.User;
 
 public interface UserDAO {
 
-    void createUser(User user)throws UserDIsOccupiedException;
+    void createUser(User user)throws UserIDIsOccupiedException;
 
-    User getUser( int id )throws UserDIsOccupiedException;
+    User getUser(int id)throws UserIDIsOccupiedException;
 
-    User getUser( String name )throws UserDIsOccupiedException;
+    User getUser(String name)throws UserIDIsOccupiedException;
 
-    boolean deleteUser (int id );
+    boolean deleteUser(int id);
 
-    boolean deleteUser( User user );
+    boolean deleteUser(User user);
 }

@@ -1,18 +1,19 @@
 package json;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.HashSet;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dao.WeatherDAO;
-import hu.weathernow.app.exceptions.*;
-import hu.weathernow.app.model.Weather;
+import exceptions.WeatherIDIsOccupiedException;
+import model.Weather;
 
-public class WeatherDAOJSON implements WeatherDAO{
+import java.io.File;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.HashSet;
+
+public class WeatherDAOJSON implements WeatherDAO {
 
 
     ObjectMapper mapper;

@@ -1,10 +1,10 @@
-package hu.weathernow.app.model;
+package model;
 
-public class User {
+public class Town {
     private int id;
     private String name;
 
-    public User(int id, String name) {
+    public Town(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -27,10 +27,10 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        Town town = (Town) o;
 
-        if (id != user.id) return false;
-        return name.equals(user.name);
+        if (id != town.id) return false;
+        return name.equals(town.name);
     }
 
 }

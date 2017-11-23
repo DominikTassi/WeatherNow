@@ -1,21 +1,21 @@
 import dao.UserDAO;
-import hu.weathernow.app.exceptions.UserDIsOccupiedException;
-import hu.weathernow.app.model.User;
+import exceptions.UserIDIsOccupiedException;
+import model.User;
 
 public class UserServiceImpl implements UserDAO {
 
     private UserDAO userDAO = null;
     public UserServiceImpl(UserDAO userDAO){this.userDAO = userDAO;}
 
-    public void createUser(User user) throws UserDIsOccupiedException {
+    public void createUser(User user) throws UserIDIsOccupiedException {
 
     }
 
-    public User getUser(int id) throws UserDIsOccupiedException {
+    public User getUser(int id) throws UserIDIsOccupiedException {
         return userDAO.getUser(id);
     }
 
-    public User getUser(String name) throws UserDIsOccupiedException {
+    public User getUser(String name) throws UserIDIsOccupiedException {
         return userDAO.getUser(name);
     }
 

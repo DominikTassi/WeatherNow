@@ -5,15 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dao.UserDAO;
-import hu.weathernow.app.exceptions.*;
-import hu.weathernow.app.model.User;
+import exceptions.UserIDIsOccupiedException;
+import model.User;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class UserDAOJSON implements UserDAO{
+public class UserDAOJSON implements UserDAO {
 
     ObjectMapper mapper;
     File jsonfile;
@@ -41,7 +41,7 @@ public class UserDAOJSON implements UserDAO{
 
 
 
-    public void createUser(User user) throws UserDIsOccupiedException {
+    public void createUser(User user) throws UserIDIsOccupiedException {
         Collection<User> users = new HashSet<User>();
         boolean uniqueId = true;
         for(User u : users){
@@ -50,7 +50,7 @@ public class UserDAOJSON implements UserDAO{
             }
         }
         if(!uniqueId){
-            throw new UserDIsOccupiedException(String.valueOf(user.getId()));
+            throw new UserIDIsOccupiedException(String.valueOf(user.getId()));
         }
         users.add(user);
         try {
@@ -61,7 +61,7 @@ public class UserDAOJSON implements UserDAO{
     }
 
     @Override
-    public User getUser(int id) throws UserDIsOccupiedException {
+    public User getUser(int id) throws UserIDIsOccupiedException {
         Collection<User> users = new HashSet<User>();
         try{
             users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
@@ -75,12 +75,12 @@ public class UserDAOJSON implements UserDAO{
         }
         catch (IOException e) {
             e.printStackTrace();
-        }throw new UserDIsOccupiedException(String.valueOf(id));
+        }throw new UserIDIsOccupiedException(String.valueOf(id));
     }
 
 
     @Override
-    public User getUser(String name) throws UserDIsOccupiedException {
+    public User getUser(String name) throws UserIDIsOccupiedException {
         Collection<User> users = new HashSet<User>();
         try{
             users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
@@ -94,7 +94,7 @@ public class UserDAOJSON implements UserDAO{
         }
         catch (IOException e) {
             e.printStackTrace();
-        }throw new UserDIsOccupiedException(name);
+        }throw new UserIDIsOccupiedException(name);
     }
 
     @Override

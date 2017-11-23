@@ -1,17 +1,15 @@
 package controller;
 
 import com.example.myschema.UserRequest;
-import hu.weathernow.app.model.User;
-import hu.weathernow.app.service.UserService;
+import exceptions.NoUserException;
+import exceptions.UserIDIsOccupiedException;
+import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import hu.weathernow.app.service.WeatherService;
-import hu.weathernow.app.exceptions.*;
-import com.example.myschema.*;
+import service.UserService;
 
 
 @Controller
@@ -25,7 +23,7 @@ public class UserController {
 
     @RequestMapping(value = "/getUser/{uid}")
     public ModelAndView getUserById(@PathVariable(value = "id") int id)
-            throws NoUserException{
+            throws NoUserException {
         ModelAndView mav = new ModelAndView("userdata");
         mav.addObject("user",userService.getUser(id));
         return mav;
@@ -43,7 +41,7 @@ public class UserController {
 
     @RequestMapping(value = {"/addUser"}, method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void addUser(@RequestBody UserRequest userRequest) throws UserDIsOccupiedException {
+    public void addUser(@RequestBody UserRequest userRequest) throws UserIDIsOccupiedException {
         User user = null;
         user = new User(userRequest.getUid(), userRequest.getUsername());
         userService.createUser(user);

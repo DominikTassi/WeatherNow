@@ -1,24 +1,20 @@
 package controller;
 
-import hu.weathernow.app.service.TownService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import exceptions.TownNotFoundException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import hu.weathernow.app.service.WeatherService;
-import hu.weathernow.app.exceptions.*;
+import service.TownService;
 
 @Controller
 public class TownController {
     TownService townService;
 
     @RequestMapping(value = "/getTown/{id}")
-    public ModelAndView getUser(@PathVariable(value = "id")
-                                    int id)
-            throws TownNotFoundException {
+    public ModelAndView getUser(@PathVariable(value = "id") int id) throws TownNotFoundException {
         ModelAndView mav = new ModelAndView("towndata");
-        mav.addObject("town",townService.getTown(id));
+        mav.addObject("town", townService.getTown(id));
         return mav;
     }
 

@@ -1,6 +1,10 @@
-package hu.weathernow.app.model;
+package model;
 
-import hu.weathernow.app.exceptions.*;
+
+import exceptions.EmptyCategoryException;
+import exceptions.NoCategoryException;
+import exceptions.NoTownException;
+import exceptions.NoUserException;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -18,7 +22,7 @@ public class Weather {
     Date in = new Date();
     private LocalDateTime time = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
 
-    public Weather(int id, User user, Town town, Collection<Category> category, double temperature) throws NoUserException, NoTownException, NoCategoryException, EmptyCategoryException{
+    public Weather(int id, User user, Town town, Collection<Category> category, double temperature) throws NoUserException, NoTownException, NoCategoryException, EmptyCategoryException {
         if (user == null)
                 throw new NoUserException("User cannot be null");
 

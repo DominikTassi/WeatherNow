@@ -1,9 +1,9 @@
-package dao;
+package service;
 
 
 import exceptions.TownNotFoundException;
 import model.Town;
 
-public interface TownDAO {
+public interface TownService {
     public Town getTown(int id) throws TownNotFoundException;
 }

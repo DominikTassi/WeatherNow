@@ -1,10 +1,7 @@
 package dao;
 
-import hu.weathernow.app.exceptions.*;
-import hu.weathernow.app.model.Category;
-import hu.weathernow.app.model.Town;
-import hu.weathernow.app.model.User;
-import hu.weathernow.app.model.Weather;
+import exceptions.WeatherIDIsOccupiedException;
+import model.Weather;
 
 import java.util.Collection;
 
