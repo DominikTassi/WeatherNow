@@ -7,8 +7,9 @@ public class UserServiceImpl implements UserDAO {
     private UserDAO userDAO = null;
     public UserServiceImpl(UserDAO userDAO){this.userDAO = userDAO;}
 
-    public void createUser(User user) throws UserIDIsOccupiedException {
 
+    public void createUser(User user) throws UserIDIsOccupiedException {
+        userDAO.createUser(user);
     }
 
     public User getUser(int id) throws UserIDIsOccupiedException {
