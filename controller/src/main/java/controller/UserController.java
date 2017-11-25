@@ -15,6 +15,7 @@ import service.UserService;
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
+
     @Autowired
     UserService userService;
 
