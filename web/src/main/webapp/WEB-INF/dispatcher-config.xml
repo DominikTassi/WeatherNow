@@ -10,7 +10,7 @@
     <mvc:annotation-driven></mvc:annotation-driven>
 
     <bean id="userDAO" class="json.UserDAOJSON">
-        <constructor-arg name="filename" value="/home/dominik/IdeaProjects/newWN/WeatherNow/data.json"></constructor-arg>
+        <constructor-arg name="filename" value="/home/dominik/IdeaProjects/WeatherNow/data.json"></constructor-arg>
     </bean>
 
     <bean id="userService" class="UserServiceImpl">
