@@ -22,6 +22,10 @@ public class WeatherController {
     @Autowired
     WeatherService weatherService;
 
+    public WeatherController(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
+
     @RequestMapping(value = "/getWeather")
     public ModelAndView getWeather(){
         ModelAndView mav = new ModelAndView();

@@ -11,6 +11,10 @@ import service.TownService;
 public class TownController {
     TownService townService;
 
+    public TownController(TownService townService) {
+        this.townService = townService;
+    }
+
     @RequestMapping(value = "/getTown/{id}")
     public ModelAndView getUser(@PathVariable(value = "id") int id) throws TownNotFoundException {
         ModelAndView mav = new ModelAndView("towndata");
