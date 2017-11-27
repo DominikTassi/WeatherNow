@@ -25,7 +25,7 @@ public class UserController {
 
     @RequestMapping(value = "/getUser/{uid}")
     public ModelAndView getUserById(@PathVariable(value = "id") int id)
-            throws NoUserException {
+            throws NoUserException, UserIDIsOccupiedException {
         ModelAndView mav = new ModelAndView("userdata");
         mav.addObject("user",userService.getUser(id));
         return mav;
@@ -34,7 +34,7 @@ public class UserController {
 
     @RequestMapping(value = "/getUser/{username}")
     public ModelAndView getUserByName(@PathVariable(value = "username") String username)
-            throws NoUserException{
+            throws NoUserException, UserIDIsOccupiedException {
         ModelAndView mav = new ModelAndView("userdata");
         mav.addObject("user",userService.getUser(username));
         return mav;

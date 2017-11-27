@@ -1,10 +1,7 @@
 package controller;
 
 import com.example.myschema.WeatherRequest;
-import exceptions.EmptyCategoryException;
-import exceptions.NoCategoryException;
-import exceptions.NoTownException;
-import exceptions.NoUserException;
+import exceptions.*;
 import model.Weather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -36,7 +33,7 @@ public class WeatherController {
 
     @RequestMapping(value = {"/createWeather"}, method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void addWeather(@RequestBody WeatherRequest weatherRequest) throws NoUserException, EmptyCategoryException, NoCategoryException, NoTownException {
+    public void addWeather(@RequestBody WeatherRequest weatherRequest) throws NoUserException, EmptyCategoryException, NoCategoryException, NoTownException, WeatherIDIsOccupiedException {
         Weather weather = null;
         weather = new Weather(weather.getId(), weather.getUser(), weather.getTown(), weather.getCategory(), weather.getTemperature());
         weatherService.createWeather(weather);

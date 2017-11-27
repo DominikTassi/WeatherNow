@@ -1,13 +1,17 @@
+package hu.app.service.impl;
+
 import dao.UserDAO;
 import exceptions.UserIDIsOccupiedException;
 import model.User;
+import service.UserService;
 
-public class UserServiceImpl implements UserDAO {
+public class UserServiceImpl implements UserService {
 
     private UserDAO userDAO = null;
 
-    public UserServiceImpl(UserDAO userDAO){this.userDAO = userDAO;}
-
+    public UserServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     public void createUser(User user) throws UserIDIsOccupiedException {
         userDAO.createUser(user);
@@ -25,7 +29,7 @@ public class UserServiceImpl implements UserDAO {
         return userDAO.deleteUser(id);
     }
 
-    public boolean deleteUser(User user){
+    public boolean deleteUser(User user) {
         return userDAO.deleteUser(user);
     }
 }
