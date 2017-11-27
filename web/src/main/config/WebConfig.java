@@ -14,15 +14,18 @@ import service.WeatherService;
 @Configuration
 public class WebConfig {
 
+
     @Bean
     public UserController userController(){
         return new UserController(userService());
     }
 
+    @Bean
     UserService userService() {
         return new UserServiceImpl(userDAO());
     }
 
+    @Bean
     UserDAO userDAO(){
         return new UserDAOJSON("users.json");
     }
