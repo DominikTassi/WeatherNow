@@ -1,4 +1,4 @@
-package config;
+package hu.app.web.config;
 
 import controller.TownController;
 import controller.WeatherController;
@@ -20,45 +20,45 @@ import service.WeatherService;
 
 @Configuration
 public class WebConfig {
-
+    @Bean(value = "userDAO")
     public UserDAO userDAO(){
         return new UserDAOJSON("users.json");
     }
 
-    @Bean
+    @Bean(value = "userService")
     public UserService userService() {
         return new UserServiceImpl(userDAO());
     }
-
-    public UserController userController(){
-        return new UserController(userService());
-    }
-
+  //  @Bean(value = "userController")
+ //   public UserController userController(){
+  //      return new UserController(userService());
+   // }
+    @Bean(value = "weatherDAO")
     public WeatherDAO weatherDAO(){
         return new WeatherDAOJSON("weather.json");
     }
 
-    @Bean
+    @Bean(value = "weatherService")
     public WeatherService weatherService(){
         return new WeatherServiceImpl(weatherDAO());
     }
-
-    public WeatherController weatherController(){
-        return new WeatherController(weatherService());
-    }
-
+    //@Bean(value = "weatherController")
+   // public WeatherController weatherController(){
+    //    return new WeatherController(weatherService());
+   // }
+    @Bean(value = "townDAO")
     public TownDAO townDAO(){
         return new TownDAOJSON("town.json");
     }
 
-    @Bean
+    @Bean(value = "townsService")
     public TownService townService(){
         return new TownServiceImpl(townDAO());
     }
-
-    public TownController townController(){
-        return new TownController(townService());
-    }
+//    @Bean(value = "townController")
+//    public TownController townController(){
+//        return new TownController(townService());
+ //   }
 
 }
 

@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import service.TownService;
 
 @Controller
+@RequestMapping("/town")
 public class TownController {
     TownService townService;
 

@@ -23,6 +23,8 @@ public class WeatherController {
     WeatherService weatherService;
 
     public WeatherController(WeatherService weatherService) {
+
+        System.out.println("CICA");
         this.weatherService = weatherService;
     }
 
