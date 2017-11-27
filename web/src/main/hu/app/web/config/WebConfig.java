@@ -22,7 +22,7 @@ import service.WeatherService;
 public class WebConfig {
     @Bean(value = "userDAO")
     public UserDAO initUserDAO(){
-        return new UserDAOJSON("asd.json");
+        return new UserDAOJSON("/home/dominik/IntelliJProjects/WeatherNow/users.json");
     }
 
     @Bean(value = "userService")
@@ -33,5 +33,38 @@ public class WebConfig {
     @Bean(value = "userController")
     public UserController initUserController(){
         return new UserController(initUserService());
+    }
+
+
+    @Bean(value = "weatherDAO")
+    public WeatherDAO initWeatherDAO(){
+        return new WeatherDAOJSON("/home/dominik/IntelliJProjects/WeatherNow/weathers.json");
+    }
+
+    @Bean(value = "weatherService")
+    public WeatherService initWeatherService(){
+        return new WeatherServiceImpl(initWeatherDAO());
+    }
+
+    @Bean(value = "weatherController")
+    public WeatherController initWeatherController(){
+        return new WeatherController(initWeatherService());
+    }
+
+
+
+    @Bean(value = "townDAO")
+    public TownDAO initTownDAO(){
+        return new TownDAOJSON("/home/dominik/IntelliJProjects/WeatherNow/towns.json");
+    }
+
+    @Bean(value = "townService")
+    public TownService initTownService(){
+        return new TownServiceImpl(initTownDAO());
+    }
+
+    @Bean(value = "townController")
+    public TownController initTownController(){
+        return new TownController(initTownService());
     }
 }

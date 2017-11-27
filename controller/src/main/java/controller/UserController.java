@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/getUser/{uid}")
-    public ModelAndView getUserById(@PathVariable(value = "id") int id)
+    public ModelAndView getUserById(@PathVariable(value = "uid") int id)
             throws NoUserException, UserIDIsOccupiedException {
         ModelAndView mav = new ModelAndView("userdata");
         mav.addObject("user",userService.getUser(id));

@@ -47,7 +47,6 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="temperature" type="xs:double"/>
-                <xs:element name="time" type="xs:dateTime"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
