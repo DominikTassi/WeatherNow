@@ -1,3 +1,5 @@
+package config;
+
 import json.UserDAOJSON;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,4 +22,6 @@ public class WebConfig {
     UserDAO userDAO(){
         return new UserDAOJSON("users.json");
     }
+
 }
+

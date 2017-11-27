@@ -5,6 +5,7 @@ import model.User;
 public class UserServiceImpl implements UserDAO {
 
     private UserDAO userDAO = null;
+
     public UserServiceImpl(UserDAO userDAO){this.userDAO = userDAO;}
 
 

@@ -19,8 +19,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    public UserController(UserService userService){ this.userService = userService;}
-
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/getUser/{uid}")
     public ModelAndView getUserById(@PathVariable(value = "id") int id)

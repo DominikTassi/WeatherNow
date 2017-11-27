@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="WeatherRequest">
+
+    <xs:element name="weatherRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="wid" type="xs:int"></xs:element>
+                <xs:element name="wid" type="xs:int"/>
                 <xs:element name="user">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="uid" type="xs:int"></xs:element>
-                            <xs:element name="username" type="xs:string"></xs:element>
+                            <xs:element name="uid" type="xs:int"/>
+                            <xs:element name="username" type="xs:string"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="town">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="tid" type="xs:int"></xs:element>
-                            <xs:element name="town" type="xs:string"></xs:element>
+                            <xs:element name="tid" type="xs:int"/>
+                            <xs:element name="town" type="xs:string"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -25,28 +26,28 @@
                         <xs:sequence>
                             <xs:element name="category" maxOccurs="unbounded">
                                 <xs:simpleType>
-                                    <xs:restriction>
-                                        <xs:enumeration value="HOT"></xs:enumeration>
-                                        <xs:enumeration value="SUNNY"></xs:enumeration>
-                                        <xs:enumeration value="CLOUDY"></xs:enumeration>
-                                        <xs:enumeration value="RAIN"></xs:enumeration>
-                                        <xs:enumeration value="WET"></xs:enumeration>
-                                        <xs:enumeration value="COLD"></xs:enumeration>
-                                        <xs:enumeration value="DRY"></xs:enumeration>
-                                        <xs:enumeration value="WINDY"></xs:enumeration>
-                                        <xs:enumeration value="FOGGY"></xs:enumeration>
-                                        <xs:enumeration value="THUNDERSTORMS"></xs:enumeration>
-                                        <xs:enumeration value="HAIL"></xs:enumeration>
-                                        <xs:enumeration value="SLEET"></xs:enumeration>
-                                        <xs:enumeration value="STROMY"></xs:enumeration>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="HOT"/>
+                                        <xs:enumeration value="SUNNY"/>
+                                        <xs:enumeration value="CLOUDY"/>
+                                        <xs:enumeration value="RAIN"/>
+                                        <xs:enumeration value="WET"/>
+                                        <xs:enumeration value="COLD"/>
+                                        <xs:enumeration value="DRY"/>
+                                        <xs:enumeration value="WINDY"/>
+                                        <xs:enumeration value="FOGGY"/>
+                                        <xs:enumeration value="THUNDERSTORMS"/>
+                                        <xs:enumeration value="HAIL"/>
+                                        <xs:enumeration value="SLEET"/>
+                                        <xs:enumeration value="STROMY"/>
                                     </xs:restriction>
                                 </xs:simpleType>
                             </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="temperature" type="xs:double"></xs:element>
-                <xs:element name="time" type="xs:dateTime"></xs:element>
+                <xs:element name="temperature" type="xs:double"/>
+                <xs:element name="time" type="xs:dateTime"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
