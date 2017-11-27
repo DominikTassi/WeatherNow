@@ -55,6 +55,7 @@ public class UserDAOJSON implements UserDAO {
         users.add(user);
         try {
             mapper.writeValue(jsonfile, users);
+            System.out.println(jsonfile.getAbsolutePath());
         } catch (IOException e) {
             e.printStackTrace();
         }

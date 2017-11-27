@@ -21,44 +21,17 @@ import service.WeatherService;
 @Configuration
 public class WebConfig {
     @Bean(value = "userDAO")
-    public UserDAO userDAO(){
-        return new UserDAOJSON("users.json");
+    public UserDAO initUserDAO(){
+        return new UserDAOJSON("asd.json");
     }
 
     @Bean(value = "userService")
-    public UserService userService() {
-        return new UserServiceImpl(userDAO());
-    }
-  //  @Bean(value = "userController")
- //   public UserController userController(){
-  //      return new UserController(userService());
-   // }
-    @Bean(value = "weatherDAO")
-    public WeatherDAO weatherDAO(){
-        return new WeatherDAOJSON("weather.json");
+    public UserService initUserService() {
+        return new UserServiceImpl(initUserDAO());
     }
 
-    @Bean(value = "weatherService")
-    public WeatherService weatherService(){
-        return new WeatherServiceImpl(weatherDAO());
+    @Bean(value = "userController")
+    public UserController initUserController(){
+        return new UserController(initUserService());
     }
-    //@Bean(value = "weatherController")
-   // public WeatherController weatherController(){
-    //    return new WeatherController(weatherService());
-   // }
-    @Bean(value = "townDAO")
-    public TownDAO townDAO(){
-        return new TownDAOJSON("town.json");
-    }
-
-    @Bean(value = "townsService")
-    public TownService townService(){
-        return new TownServiceImpl(townDAO());
-    }
-//    @Bean(value = "townController")
-//    public TownController townController(){
-//        return new TownController(townService());
- //   }
-
 }
-
