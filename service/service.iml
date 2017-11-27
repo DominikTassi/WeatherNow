@@ -12,6 +12,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="core" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
-    <orderEntry type="library" name="Maven: hu.app.new.weathernow:core:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: hu.app.weathernow:core:1.0-SNAPSHOT" level="project" />
   </component>
 </module>
