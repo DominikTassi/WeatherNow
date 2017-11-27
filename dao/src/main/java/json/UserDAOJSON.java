@@ -42,7 +42,7 @@ public class UserDAOJSON implements UserDAO {
 
 
     public void createUser(User user) throws UserIDIsOccupiedException {
-        Collection<User> users = new HashSet<User>();
+        Collection<User> users = getAllUser();
         boolean uniqueId = true;
         for(User u : users){
             if(u.getId() == user.getId()){
@@ -61,6 +61,7 @@ public class UserDAOJSON implements UserDAO {
         }
     }
 
+
     @Override
     public User getUser(int id) throws UserIDIsOccupiedException {
         Collection<User> users = new HashSet<User>();
@@ -77,6 +78,21 @@ public class UserDAOJSON implements UserDAO {
         catch (IOException e) {
             e.printStackTrace();
         }throw new UserIDIsOccupiedException(String.valueOf(id));
+    }
+
+    @Override
+    public Collection<User> getAllUser() {
+        Collection<User> users = new HashSet<User>();
+        try {
+            System.out.println(jsonfile.getAbsoluteFile());
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
+        }catch (MismatchedInputException e){
+            System.err.println("Empty file");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
 
