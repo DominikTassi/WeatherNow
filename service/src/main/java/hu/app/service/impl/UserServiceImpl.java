@@ -5,6 +5,8 @@ import exceptions.UserIDIsOccupiedException;
 import model.User;
 import service.UserService;
 
+import java.util.Collection;
+
 public class UserServiceImpl implements UserService {
 
     private UserDAO userDAO = null;
@@ -19,6 +21,11 @@ public class UserServiceImpl implements UserService {
 
     public User getUser(int id) throws UserIDIsOccupiedException {
         return userDAO.getUser(id);
+    }
+
+    @Override
+    public Collection<User> getAllUser() {
+        return userDAO.getAllUser();
     }
 
     public User getUser(String name) throws UserIDIsOccupiedException {

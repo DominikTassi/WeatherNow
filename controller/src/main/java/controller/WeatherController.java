@@ -2,6 +2,9 @@ package controller;
 
 import com.example.myschema.WeatherRequest;
 import exceptions.*;
+import model.Category;
+import model.Town;
+import model.User;
 import model.Weather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -40,7 +43,8 @@ public class WeatherController {
     @ResponseBody
     public void addWeather(@RequestBody WeatherRequest weatherRequest) throws NoUserException, EmptyCategoryException, NoCategoryException, NoTownException, WeatherIDIsOccupiedException {
         Weather weather = null;
-        weather = new Weather(weather.getId(), weather.getUser(), weather.getTown(), weather.getCategory(), weather.getTemperature());
+        weather = new Weather(weatherRequest.getWid(), new User(weatherRequest.getUid(), weatherRequest.getUsername()),
+                new Town(weatherRequest.getTid(), weatherRequest.getTown()), Enum.valueOf(Category.class, weatherRequest.getCategory()), weatherRequest.getTemperature());
         weatherService.createWeather(weather);
     }
 }

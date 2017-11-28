@@ -2,6 +2,7 @@ package hu.app.service.impl;
 
 import dao.WeatherDAO;
 import exceptions.WeatherIDIsOccupiedException;
+import model.Category;
 import model.Weather;
 import service.WeatherService;
 

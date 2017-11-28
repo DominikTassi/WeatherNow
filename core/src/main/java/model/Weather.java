@@ -15,14 +15,14 @@ public class Weather {
     private int id;
     private User user;
     private Town town;
-    private Collection<Category> category;
+    private Category category;
     private double temperature;
 
 
     Date in = new Date();
     private LocalDateTime time = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
 
-    public Weather(int id, User user, Town town, Collection<Category> category, double temperature) throws NoUserException, NoTownException, NoCategoryException, EmptyCategoryException {
+    public Weather(int id, User user, Town town, Category category, double temperature) throws NoUserException, NoTownException, NoCategoryException, EmptyCategoryException {
         if (user == null)
                 throw new NoUserException("User cannot be null");
 
@@ -32,8 +32,6 @@ public class Weather {
         if (category == null)
             throw new NoCategoryException("Category cannot be null");
 
-        if (category.isEmpty())
-            throw new EmptyCategoryException("Category cannot be empty");
         this.id = id;
         this.user = user;
         this.town = town;
@@ -55,7 +53,7 @@ public class Weather {
         return town;
     }
 
-    public Collection<Category> getCategory() {
+    public Category getCategory() {
         return category;
     }
 
@@ -75,7 +73,7 @@ public class Weather {
         this.town = town;
     }
 
-    public void setCategory(Collection<Category> category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
