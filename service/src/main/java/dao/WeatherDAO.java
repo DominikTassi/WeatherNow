@@ -10,8 +10,8 @@ public interface WeatherDAO {
 
     public Collection<Weather> getAllWeather();
 
-    public boolean updateWeather(Weather weather);
+    public boolean updateWeather(Weather weather) throws WeatherIDIsOccupiedException;
 
-    public boolean deleteWeather(int i);
-    public boolean deleteWeather(Weather weather);
+    public boolean deleteWeather(int i) throws WeatherIDIsOccupiedException;
+    public boolean deleteWeather(Weather weather) throws WeatherIDIsOccupiedException;
 }

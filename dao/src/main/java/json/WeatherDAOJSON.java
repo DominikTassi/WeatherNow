@@ -75,17 +75,60 @@ public class WeatherDAOJSON implements WeatherDAO {
     }
 
     @Override
-    public boolean updateWeather(Weather weather)  {
-        return false;
+    public boolean updateWeather(Weather weather) throws WeatherIDIsOccupiedException {
+        Collection<Weather> weathers = getAllWeather();
+        try{
+            weathers = mapper.readValue(jsonfile, new TypeReference<HashSet<Weather>>(){});
+            for(Weather w: weathers){
+                if (w.equals(weather)){
+                    weathers.remove(w);
+                    weathers.add(weather);
+                    return true;
+                }
+            }
+        }catch (MismatchedInputException e){
+            System.err.println("Empty file");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }throw new WeatherIDIsOccupiedException(String.valueOf(weather.getId()));
     }
 
     @Override
-    public boolean deleteWeather(int i) {
-        return false;
+    public boolean deleteWeather(int i) throws WeatherIDIsOccupiedException {
+        Collection<Weather> weathers = getAllWeather();
+        try{
+            weathers = mapper.readValue(jsonfile, new TypeReference<HashSet<Weather>>(){});
+            for(Weather w: weathers){
+                if (w.getId() == i){
+                    weathers.remove(w);
+                    return true;
+                }
+            }
+        }catch (MismatchedInputException e){
+            System.err.println("Empty file");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }throw new WeatherIDIsOccupiedException(String.valueOf(i));
     }
 
     @Override
-    public boolean deleteWeather(Weather weather) {
-        return false;
+    public boolean deleteWeather(Weather weather) throws WeatherIDIsOccupiedException {
+        Collection<Weather> weathers = getAllWeather();
+        try{
+            weathers = mapper.readValue(jsonfile, new TypeReference<HashSet<Weather>>(){});
+            for(Weather w: weathers){
+                if (w.equals(weather)){
+                    weathers.remove(w);
+                    return true;
+                }
+            }
+        }catch (MismatchedInputException e){
+            System.err.println("Empty file");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }throw new WeatherIDIsOccupiedException(String.valueOf(weather.getId()));
     }
 }

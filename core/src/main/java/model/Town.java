@@ -7,6 +7,18 @@ public class Town {
     private int id;
     private String name;
 
+/*
+    {
+        "wid": 1,
+            "uid": 2,
+            "username": "Dominik_Tassi",
+            "tid": 3,
+            "town": "Miskolc",
+            "category": "COLD",
+            "temperature": -5.0
+    }
+*/
+
     @JsonCreator
     public Town(@JsonProperty(value = "id")int id, @JsonProperty(value = "name")String name) {
         this.id = id;
