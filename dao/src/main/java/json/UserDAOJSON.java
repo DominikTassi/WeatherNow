@@ -121,7 +121,8 @@ public class UserDAOJSON implements UserDAO {
             users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
             for(User u: users){
                 if (u.getId() == id){
-                    return users.remove(u);
+                    users.remove(u);
+                    return true;
                 }
             }
         }catch (MismatchedInputException e){
@@ -133,7 +134,21 @@ public class UserDAOJSON implements UserDAO {
     }
 
     @Override
-    public boolean deleteUser(User user){
-        return false;
+    public boolean deleteUser(User user) throws UserIDIsOccupiedException {
+        Collection<User> users = getAllUser();
+        try{
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
+            for(User u: users){
+                if (u.equals(user)){
+                    users.remove(u);
+                    return true;
+                }
+            }
+        }catch (MismatchedInputException e){
+            System.err.println("Empty file");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }throw new UserIDIsOccupiedException(String.valueOf(user.getId()));
     }
 }

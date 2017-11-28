@@ -18,5 +18,5 @@ public interface UserDAO {
 
     boolean deleteUser(int id) throws UserIDIsOccupiedException;
 
-    boolean deleteUser(User user);
+    boolean deleteUser(User user) throws UserIDIsOccupiedException;
 }
