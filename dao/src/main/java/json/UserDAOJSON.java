@@ -40,6 +40,21 @@ public class UserDAOJSON implements UserDAO {
 
 
 
+    @Override
+    public Collection<User> getAllUser() {
+        Collection<User> users = new HashSet<User>();
+        try {
+            System.out.println(jsonfile.getAbsoluteFile());
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
+        }catch (MismatchedInputException e){
+            System.err.println("Empty file");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
 
     public void createUser(User user) throws UserIDIsOccupiedException {
         Collection<User> users = getAllUser();
@@ -80,21 +95,6 @@ public class UserDAOJSON implements UserDAO {
         }throw new UserIDIsOccupiedException(String.valueOf(id));
     }
 
-    @Override
-    public Collection<User> getAllUser() {
-        Collection<User> users = new HashSet<User>();
-        try {
-            System.out.println(jsonfile.getAbsoluteFile());
-            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
-        }catch (MismatchedInputException e){
-            System.err.println("Empty file");
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        return users;
-    }
-
 
     @Override
     public User getUser(String name) throws UserIDIsOccupiedException {
@@ -115,8 +115,21 @@ public class UserDAOJSON implements UserDAO {
     }
 
     @Override
-    public boolean deleteUser(int id){
-        return false;
+    public boolean deleteUser(int id) throws UserIDIsOccupiedException {
+        Collection<User> users = getAllUser();
+        try{
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
+            for(User u: users){
+                if (u.getId() == id){
+                    return users.remove(u);
+                }
+            }
+        }catch (MismatchedInputException e){
+            System.err.println("Empty file");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }throw new UserIDIsOccupiedException(String.valueOf(id));
     }
 
     @Override

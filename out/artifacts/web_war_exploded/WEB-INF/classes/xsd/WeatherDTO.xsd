@@ -1,50 +1,31 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
     <xs:element name="weatherRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="wid" type="xs:int"/>
-                <xs:element name="user">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="uid" type="xs:int"/>
-                            <xs:element name="username" type="xs:string"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="town">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="tid" type="xs:int"/>
-                            <xs:element name="town" type="xs:string"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="categories">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="category" maxOccurs="unbounded">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string">
-                                        <xs:enumeration value="HOT"/>
-                                        <xs:enumeration value="SUNNY"/>
-                                        <xs:enumeration value="CLOUDY"/>
-                                        <xs:enumeration value="RAIN"/>
-                                        <xs:enumeration value="WET"/>
-                                        <xs:enumeration value="COLD"/>
-                                        <xs:enumeration value="DRY"/>
-                                        <xs:enumeration value="WINDY"/>
-                                        <xs:enumeration value="FOGGY"/>
-                                        <xs:enumeration value="THUNDERSTORMS"/>
-                                        <xs:enumeration value="HAIL"/>
-                                        <xs:enumeration value="SLEET"/>
-                                        <xs:enumeration value="STROMY"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
+                <xs:element name="uid" type="xs:int"/>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="tid" type="xs:int"/>
+                <xs:element name="town" type="xs:string"/>
+                <xs:element name="Category" type="xs:string">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="HOT"/>
+                            <xs:enumeration value="SUNNY"/>
+                            <xs:enumeration value="CLOUDY"/>
+                            <xs:enumeration value="RAIN"/>
+                            <xs:enumeration value="WET"/>
+                            <xs:enumeration value="COLD"/>
+                            <xs:enumeration value="DRY"/>
+                            <xs:enumeration value="WINDY"/>
+                            <xs:enumeration value="FOGGY"/>
+                            <xs:enumeration value="THUNDERSTORMS"/>
+                            <xs:enumeration value="HAIL"/>
+                            <xs:enumeration value="SLEET"/>
+                            <xs:enumeration value="STROMY"/>
+                        </xs:restriction>
+                    </xs:simpleType>
                 </xs:element>
                 <xs:element name="temperature" type="xs:double"/>
             </xs:sequence>

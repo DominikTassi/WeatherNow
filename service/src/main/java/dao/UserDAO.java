@@ -16,7 +16,7 @@ public interface UserDAO {
 
     User getUser(String name)throws UserIDIsOccupiedException;
 
-    boolean deleteUser(int id);
+    boolean deleteUser(int id) throws UserIDIsOccupiedException;
 
     boolean deleteUser(User user);
 }

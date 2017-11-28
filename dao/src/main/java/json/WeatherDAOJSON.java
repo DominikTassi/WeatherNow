@@ -38,9 +38,10 @@ public class WeatherDAOJSON implements WeatherDAO {
             }
         }
     }
-    @Override
+
+
     public void createWeather(Weather weather) throws WeatherIDIsOccupiedException {
-        Collection<Weather> weathers = new HashSet<Weather>();
+        Collection<Weather> weathers = getAllWeather();
         boolean uniqueId = true;
         for(Weather w : weathers){
             if(w.getId() == weather.getId()){
@@ -65,7 +66,7 @@ public class WeatherDAOJSON implements WeatherDAO {
             System.out.println(jsonfile.getAbsoluteFile());
             weathers = mapper.readValue(jsonfile, new TypeReference<HashSet<Weather>>(){});
         }catch (MismatchedInputException e){
-            System.err.println("Empty file");
+            System.err.println("Empty file" + e);
         }
         catch (IOException e) {
             e.printStackTrace();

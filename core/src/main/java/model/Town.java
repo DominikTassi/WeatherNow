@@ -1,10 +1,14 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Town {
     private int id;
     private String name;
 
-    public Town(int id, String name) {
+    @JsonCreator
+    public Town(@JsonProperty(value = "id")int id, @JsonProperty(value = "name")String name) {
         this.id = id;
         this.name = name;
     }

@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         return userDAO.getUser(name);
     }
 
-    public boolean deleteUser(int id) {
+    public boolean deleteUser(int id) throws UserIDIsOccupiedException {
         return userDAO.deleteUser(id);
     }
 

@@ -1,6 +1,8 @@
 package model;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import exceptions.EmptyCategoryException;
 import exceptions.NoCategoryException;
 import exceptions.NoTownException;
@@ -22,7 +24,8 @@ public class Weather {
     Date in = new Date();
     private LocalDateTime time = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
 
-    public Weather(int id, User user, Town town, Category category, double temperature) throws NoUserException, NoTownException, NoCategoryException, EmptyCategoryException {
+    @JsonCreator
+    public Weather(@JsonProperty("id")int id, @JsonProperty("user")User user, @JsonProperty("town")Town town, @JsonProperty("category")Category category, @JsonProperty("temperature")double temperature) throws NoUserException, NoTownException, NoCategoryException, EmptyCategoryException {
         if (user == null)
                 throw new NoUserException("User cannot be null");
 
@@ -39,7 +42,6 @@ public class Weather {
         this.temperature = temperature;
         this.time = LocalDateTime.now();
     }
-
 
     public int getId() {
         return id;
