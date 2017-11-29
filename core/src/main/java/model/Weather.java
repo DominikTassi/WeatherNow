@@ -8,11 +8,12 @@ import exceptions.NoCategoryException;
 import exceptions.NoTownException;
 import exceptions.NoUserException;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Collection;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//@JsonIgnoreProperties(value = {"time"})
 public class Weather {
     private int id;
     private User user;
@@ -20,9 +21,16 @@ public class Weather {
     private Category category;
     private double temperature;
 
+    public String getTime() {
+        return time;
+    }
 
-    Date in = new Date();
-    private LocalDateTime time = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    private String time;
+
 
     @JsonCreator
     public Weather(@JsonProperty("id")int id, @JsonProperty("user")User user, @JsonProperty("town")Town town, @JsonProperty("category")Category category, @JsonProperty("temperature")double temperature) throws NoUserException, NoTownException, NoCategoryException, EmptyCategoryException {
@@ -40,7 +48,7 @@ public class Weather {
         this.town = town;
         this.category = category;
         this.temperature = temperature;
-        this.time = LocalDateTime.now();
+        this.time = time;
     }
 
     public int getId() {
@@ -63,9 +71,6 @@ public class Weather {
         return temperature;
     }
 
-    public Date getTime() {
-        return Date.from(time.atZone(ZoneId.systemDefault()).toInstant());
-    }
 
     public void setUser(User user) {
         this.user = user;

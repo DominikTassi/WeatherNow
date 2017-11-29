@@ -7,18 +7,18 @@ import model.Town;
 import model.User;
 import model.Weather;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import service.WeatherService;
 
+import java.time.LocalDateTime;
+import java.util.Collection;
+
 
 @Controller
-@RequestMapping("/weather")
 public class WeatherController {
 
 
@@ -30,13 +30,10 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
-    @RequestMapping(value = "/getWeather")
-    public ModelAndView getWeather(){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("list");
-        mav.addObject("weathears", weatherService.getAllWeather());
-        System.out.println(weatherService.getAllWeather());
-        return mav;
+    @RequestMapping(value = "/getAllWeather", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody Collection<Weather> getAllWeather(){
+        return weatherService.getAllWeather();
     }
 
     @RequestMapping(value = {"/createWeather"}, method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE)

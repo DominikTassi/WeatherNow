@@ -58,4 +58,18 @@ public class TownDAOJSON implements TownDAO {
         }throw new TownNotFoundException(String.valueOf(id));
     }
 
+
+    public Collection<Town> getAllTown(){
+        Collection<Town> users = new HashSet<Town>();
+        try {
+            System.out.println(jsonfile.getAbsoluteFile());
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<Town>>(){});
+        }catch (MismatchedInputException e){
+            System.err.println("Empty file");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
 }

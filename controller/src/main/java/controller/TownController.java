@@ -22,4 +22,6 @@ public class TownController {
         mav.addObject("town", townService.getTown(id));
         return mav;
     }
+
+
 }

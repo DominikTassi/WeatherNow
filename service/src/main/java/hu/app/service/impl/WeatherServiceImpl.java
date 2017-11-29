@@ -24,15 +24,15 @@ public class WeatherServiceImpl implements WeatherService {
       return  weatherDAO.getAllWeather();
     }
 
-    public boolean updateWeather(Weather weather) {
+    public boolean updateWeather(Weather weather) throws WeatherIDIsOccupiedException {
         return weatherDAO.updateWeather(weather);
     }
 
-    public void deleteWeather(int i) {
+    public void deleteWeather(int i) throws WeatherIDIsOccupiedException {
         weatherDAO.deleteWeather(i);
     }
 
-    public void deleteWeather(Weather weather) {
+    public void deleteWeather(Weather weather) throws WeatherIDIsOccupiedException {
         weatherDAO.deleteWeather(weather);
     }
 }

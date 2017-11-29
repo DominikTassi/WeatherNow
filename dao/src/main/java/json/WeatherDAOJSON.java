@@ -10,6 +10,11 @@ import model.Weather;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -41,6 +46,10 @@ public class WeatherDAOJSON implements WeatherDAO {
 
 
     public void createWeather(Weather weather) throws WeatherIDIsOccupiedException {
+        LocalDate localDate = LocalDate.now();//For reference
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+        String formattedString = localDate.format(formatter);
+        weather.setTime(formattedString);
         Collection<Weather> weathers = getAllWeather();
         boolean uniqueId = true;
         for(Weather w : weathers){

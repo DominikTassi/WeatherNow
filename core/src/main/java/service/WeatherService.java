@@ -12,8 +12,8 @@ public interface WeatherService {
 
     public Collection<Weather> getAllWeather();
 
-    public boolean updateWeather(Weather weather);
+    public boolean updateWeather(Weather weather) throws WeatherIDIsOccupiedException;
 
-    public void deleteWeather(int i);
-    public void deleteWeather(Weather weather);
+    public void deleteWeather(int i) throws WeatherIDIsOccupiedException;
+    public void deleteWeather(Weather weather) throws WeatherIDIsOccupiedException;
 }
