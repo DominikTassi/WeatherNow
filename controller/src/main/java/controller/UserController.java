@@ -24,21 +24,18 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/getUser/{uid}")
-    public ModelAndView getUserById(@PathVariable(value = "uid") int id)
-            throws NoUserException, UserIDIsOccupiedException {
-        ModelAndView mav = new ModelAndView("users");
-        mav.addObject("user",userService.getUser(id));
-        return mav;
+    @RequestMapping(value = "/getUserById/{id}", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public User getUserById(@PathVariable(value = "id") int id) throws UserIDIsOccupiedException {
+        return userService.getUser(id);
     }
 
 
-    @RequestMapping(value = "/getUser/{username}")
-    public ModelAndView getUserByName(@PathVariable(value = "username") String username)
-            throws NoUserException, UserIDIsOccupiedException {
-        ModelAndView mav = new ModelAndView("users");
-        mav.addObject("user",userService.getUser(username));
-        return mav;
+
+    @RequestMapping(value = "/getUserByUsername/{username}", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public User getUserByUsername(@PathVariable(value = "username") String username) throws UserIDIsOccupiedException {
+        return userService.getUser(username);
     }
 
 

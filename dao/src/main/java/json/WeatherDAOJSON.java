@@ -46,9 +46,9 @@ public class WeatherDAOJSON implements WeatherDAO {
 
 
     public void createWeather(Weather weather) throws WeatherIDIsOccupiedException {
-        LocalDate localDate = LocalDate.now();//For reference
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
-        String formattedString = localDate.format(formatter);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. LLLL dd. HH:mm");
+        String formattedString = localDateTime.format(formatter);
         weather.setTime(formattedString);
         Collection<Weather> weathers = getAllWeather();
         boolean uniqueId = true;
