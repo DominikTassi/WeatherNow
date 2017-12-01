@@ -43,5 +43,45 @@ function validate() {
         temperature.style.backgroundColor = "green";
         temperature.style.color = "snow";
     }
-    
+    $(document).ready(function () {
+        var dataWait;
+        $.ajax({
+            type: "GET",
+            url: "/addWeather",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){dataWait = data;},
+            failure: function(errMsg) {
+                alert(errMsg);
+            }
+        });
+        $("#submit").click(function(){
+            if(validate() == false)
+                return;
+            var username = document.getElementById("username");
+            var town = document.getElementById("town");
+            var category = document.getElementById("category");
+            var temperature = document.getElementById("temperature");
+            var parameters = '{' +
+                '"id":'+dataWait+',' +
+                '"uid":' + TODO +',' +
+                '"username":"' +username +'",' +
+                '"tid":'+TODO + ',' +
+                '"city":"'+city+'"' +
+                '"category":"'+category+'"'+
+                '"temperature":'+temperature
+                '}';
+            $.ajax({
+                type: "POST",
+                url: "/addWeather",
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){window.location.href = "succes.html";},
+                failure: function(errMsg) {
+                    alert(errMsg);
+                }
+            });
+        });
+    });
 }
