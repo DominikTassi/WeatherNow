@@ -30,8 +30,6 @@ public class UserController {
         return userService.getUser(id);
     }
 
-
-
     @RequestMapping(value = "/getUserByUsername/{username}", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)
     public User getUserByUsername(@PathVariable(value = "username") String username) throws UserIDIsOccupiedException {
