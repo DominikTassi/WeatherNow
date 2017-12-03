@@ -26,12 +26,14 @@ public class UserController {
 
     @RequestMapping(value = "/getUserById/{id}", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     public User getUserById(@PathVariable(value = "id") int id) throws UserIDIsOccupiedException {
         return userService.getUser(id);
     }
 
     @RequestMapping(value = "/getUserByUsername/{username}", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     public User getUserByUsername(@PathVariable(value = "username") String username) throws UserIDIsOccupiedException {
         return userService.getUser(username);
     }

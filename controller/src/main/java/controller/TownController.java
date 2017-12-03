@@ -4,10 +4,7 @@ import exceptions.TownNotFoundException;
 import model.Town;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import service.TownService;
 
@@ -21,6 +18,7 @@ public class TownController {
 
     @RequestMapping(value = "/getTown/{id}", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     public Town getWeatherById(@PathVariable(value = "id") int id )throws TownNotFoundException {
         return townService.getTown(id);
     }

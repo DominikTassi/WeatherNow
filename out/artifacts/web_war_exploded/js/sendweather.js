@@ -67,7 +67,7 @@ function validate() {
                 '"uid":' + TODO +',' +
                 '"username":"' +username +'",' +
                 '"tid":'+TODO + ',' +
-                '"city":"'+city+'"' +
+                '"town":"'+town+'"' +
                 '"category":"'+category+'"'+
                 '"temperature":'+temperature
                 '}';

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>WeatherNow</title>
     <link rel="stylesheet" type="text/css" href="resources/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/sendweather.js"></script>
 </head>
 <body>
 
@@ -21,6 +23,33 @@
         </tr>
     </table>
 </div>
+
+<div class="container">
+    <form>
+        Username<br>
+        <input type="text" id="username" required/> <br><br>
+        Town<br>
+        <input type="text" id="town" required/> <br><br>
+        Category<br>
+            <input type="radio" value="HOT" name="categoy">Hot
+            <input type="radio" value="SUNNY" name="categoy">Sunny
+            <input type="radio" value="CLOUDY" name="categoy">Cloudy
+            <input type="radio" value="RAIN" name="categoy">Rain
+            <input type="radio" value="WET" name="categoy">Cold
+            <input type="radio" value="DRY" name="categoy">Dry
+            <input type="radio" value="WINDY" name="categoy">Windy
+            <input type="radio" value="FOGGY" name="categoy">Foggy
+            <input type="radio" value="THUNDERSTORMS" name="categoy">Thunderstroms
+            <input type="radio" value="HAIL" name="categoy">Hail
+            <input type="radio" value="SLEET" name="categoy">Sleet
+            <input type="radio" value="STORMY" name="categoy">Stormy<br><br>
+        Temperature<br>
+        <input type="text" id="temperature" required><br><br>
+        <input type="button" id="submit" value="Send"/><br>
+    </form>
+</div>
+
+
 
 </body>
 </html>
