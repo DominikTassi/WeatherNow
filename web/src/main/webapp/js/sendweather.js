@@ -1,7 +1,7 @@
 function validate() {
     var username = document.getElementById("username");
     var town = document.getElementById("town");
-    var category = document.getElementById("category");
+    var category = document.getElementsByName("category");
     var temperature = document.getElementById("temperature");
     if (username.value == "") {
         username.style.backgroundColor = "red";

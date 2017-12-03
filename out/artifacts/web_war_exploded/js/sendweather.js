@@ -1,7 +1,7 @@
 function validate() {
     var username = document.getElementById("username");
     var town = document.getElementById("town");
-    var category = document.getElementById("category");
+    var category = document.getElementsByName("category");
     var temperature = document.getElementById("temperature");
     if (username.value == "") {
         username.style.backgroundColor = "red";
@@ -47,7 +47,7 @@ function validate() {
         var dataWait;
         $.ajax({
             type: "GET",
-            url: "/addWeather",
+            url: "/getAllWeather",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data){dataWait = data;},
@@ -60,7 +60,7 @@ function validate() {
                 return;
             var username = document.getElementById("username");
             var town = document.getElementById("town");
-            var category = document.getElementById("category");
+            var category = document.getElementsByName("category");
             var temperature = document.getElementById("temperature");
             var parameters = '{' +
                 '"id":'+dataWait+',' +
