@@ -39,4 +39,5 @@ public class UserServiceImpl implements UserService {
     public boolean deleteUser(User user) throws UserIDIsOccupiedException {
         return userDAO.deleteUser(user);
     }
+
 }

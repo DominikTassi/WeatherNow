@@ -7,13 +7,14 @@ import service.TownService;
 
 
 public class TownServiceImpl implements TownService {
-    private TownDAO userDAO = null;
+    private TownDAO townDAO = null;
 
     public TownServiceImpl(TownDAO userDAO) {
-        this.userDAO = userDAO;
+        this.townDAO = userDAO;
     }
 
     public Town getTown(int id) throws TownNotFoundException {
-        return userDAO.getTown(id);
+        return townDAO.getTown(id);
     }
+
 }

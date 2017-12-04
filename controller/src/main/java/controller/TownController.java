@@ -19,7 +19,8 @@ public class TownController {
     @RequestMapping(value = "/getTown/{id}", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public Town getWeatherById(@PathVariable(value = "id") int id )throws TownNotFoundException {
+    public Town getTownById(@PathVariable(value = "id") int id )throws TownNotFoundException {
         return townService.getTown(id);
     }
+
 }

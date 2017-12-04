@@ -1,25 +1,63 @@
-var response;
-$.ajax({
-    type: "GET",
-    url: "/getAllWeather",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function(data){response = data;},
-    failure: function(errMsg) {
-        alert(errMsg);
+function buildHtmlTable(selector, myList) {
+    var columns = addAllColumnHeaders(myList, selector);
+
+    for (var i = 0; i < myList.length; i++) {
+        var row$ = $('<tr/>');
+        for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+            var cellValue = myList[i][columns[colIndex]];
+            if (cellValue == null) cellValue = "";
+            row$.append($('<td/>').html(cellValue));
+        }
+        $(selector).append(row$);
     }
-});
-$(function() {
-    $.each(response, function(i, item) {
-        var $tr = $('<tr>').append(
-            $('<td>').text(item.id),
-            $('<td>').text(item.uid),
-            $('<td>').text(item.username),
-            $('<td>').text(item.tid),
-            $('<td>').text(item.town),
-            $('<td>').text(item.category),
-            $('<td>').text(item.temperature)
-        ).appendTo('#perceptions');
-        console.log($tr.wrap('<p>').html());
+}
+
+function addAllColumnHeaders(myList, selector) {
+    var columnSet = [];
+    var headerTr$ = $('<tr/>');
+
+    for (var i = 0; i < myList.length; i++) {
+        var rowHash = myList[i];
+        for (var key in rowHash) {
+            if ($.inArray(key, columnSet) == -1) {
+                columnSet.push(key);
+                headerTr$.append($('<th/>').html(key));
+            }
+        }
+    }
+    $(selector).append(headerTr$);
+
+    return columnSet;
+}
+
+function loadWeather() {
+    var urlPath = "/getAllWeather";
+    $.ajax({
+        url: urlPath,
+        contentType: 'application/json',
+        success: function (data, textStatus, xhr) {
+            console.log(xhr.status);
+            console.log(data);
+            var resultTarget = $('#perceptions')
+            resultTarget.html("");
+            buildHtmlTable(resultTarget, data);
+            addAllColumnHeaders(data, selector);
+
+
+
+        },
+        failure:function () {
+            console.log("fail");
+        },
+        error:function () {
+            console.log("error");
+        }
     });
-});
+}
+
+$(document).ready(
+    function () {
+        console.log("ready");
+        loadWeather();
+    }
+)

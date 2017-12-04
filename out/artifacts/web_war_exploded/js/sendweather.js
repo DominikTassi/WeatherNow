@@ -66,7 +66,7 @@ function validate() {
                 '"id":'+dataWait+',' +
                 '"uid":' + TODO +',' +
                 '"username":"' +username +'",' +
-                '"tid":'+TODO + ',' +
+                '"tid":'+ TODO + ',' +
                 '"town":"'+town+'"' +
                 '"category":"'+category+'"'+
                 '"temperature":'+temperature
