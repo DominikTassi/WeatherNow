@@ -22,7 +22,7 @@ import service.WeatherService;
 public class WebConfig {
     @Bean(value = "userDAO")
     public UserDAO initUserDAO(){
-        return new UserDAOJSON("/home/dominik/IntelliJProjects/WeatherNow/users.json");
+        return new UserDAOJSON(System.getProperty("users_json_file"));
     }
 
     @Bean(value = "userService")
@@ -38,7 +38,7 @@ public class WebConfig {
 
     @Bean(value = "weatherDAO")
     public WeatherDAO initWeatherDAO(){
-        return new WeatherDAOJSON("/home/dominik/IntelliJProjects/WeatherNow/weathers.json");
+        return new WeatherDAOJSON(System.getProperty("weathers_json_file"));
     }
 
     @Bean(value = "weatherService")
@@ -55,7 +55,7 @@ public class WebConfig {
 
     @Bean(value = "townDAO")
     public TownDAO initTownDAO(){
-        return new TownDAOJSON("/home/dominik/IntelliJProjects/WeatherNow/towns.json");
+        return new TownDAOJSON(System.getProperty("towns_json_file"));
     }
 
     @Bean(value = "townService")

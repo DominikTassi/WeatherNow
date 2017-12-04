@@ -31,7 +31,7 @@ function addAllColumnHeaders(myList, selector) {
 }
 
 function loadWeather() {
-    var urlPath = "/getAllWeather";
+    var urlPath = "getAllWeather";
     $.ajax({
         url: urlPath,
         contentType: 'application/json',
