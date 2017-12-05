@@ -1,8 +1,8 @@
 package controller;
 
 import com.example.myschema.UserRequest;
-import exceptions.NoUserException;
 import exceptions.UserIDIsOccupiedException;
+import exceptions.UserNotExistException;
 import exceptions.UsernameAlreadyExsistException;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import service.UserService;
 
 import java.util.Collection;
@@ -53,6 +52,13 @@ public class UserController {
         User user = null;
         user = new User(userRequest.getUid(), userRequest.getUsername());
         userService.createUser(user);
+    }
+
+    @RequestMapping(value = "/getUserIdByName/{id}", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public int getUserIdByName(@PathVariable(value = "username") String username) throws UserNotExistException, UserIDIsOccupiedException {
+        return userService.getUser(username).getId();
     }
 
 }

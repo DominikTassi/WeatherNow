@@ -23,4 +23,10 @@ public class TownController {
         return townService.getTown(id);
     }
 
+    @RequestMapping(value = "/getTownIdByName/{name}", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public int getTownIdByName(@PathVariable(value = "name") String name )throws TownNotFoundException {
+        return townService.getTown(name).getId();
+    }
 }

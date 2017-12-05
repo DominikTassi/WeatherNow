@@ -1,3 +1,41 @@
+var name;
+var town;
+function loadUserId(name) {
+    var urlPath = "getUserIdByUserName/"+name;
+    $.ajax({
+        url: urlPath,
+        contentType: 'application/json',
+        success: function (data, textStatus, xhr) {
+            console.log(xhr.status);
+            console.log(data);
+        },
+        failure:function () {
+            console.log("fail");
+        },
+        error:function () {
+            console.log("error");
+        }
+    });
+}
+
+function loadTownId(town) {
+    var urlPath = "getTownIdByName/"+town;
+    $.ajax({
+        url: urlPath,
+        contentType: 'application/json',
+        success: function (data, textStatus, xhr) {
+            console.log(xhr.status);
+            console.log(data);
+        },
+        failure:function () {
+            console.log("fail");
+        },
+        error:function () {
+            console.log("error");
+        }
+    });
+}
+
 function validate() {
     var username = document.getElementById("username");
     var town = document.getElementById("town");
@@ -63,17 +101,17 @@ function validate() {
             var category = document.getElementsByName("category");
             var temperature = document.getElementById("temperature");
             var parameters = '{' +
-                '"id":'+dataWait+',' +
-                '"uid":' + DUNNO +',' +
+                '"wid":'+dataWait+',' +
+                '"uid":' + loadUserId(username) +',' +
                 '"username":"' +username +'",' +
-                '"tid":'+ DUNNO + ',' +
+                '"tid":'+ loadTownId(town) + ',' +
                 '"town":"'+town+'"' +
                 '"category":"'+category+'"'+
                 '"temperature":'+temperature
                 '}';
             $.ajax({
                 type: "POST",
-                url: "/addWeather",
+                url: "addWeather",
                 data: parameters,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

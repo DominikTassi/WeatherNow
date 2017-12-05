@@ -5,7 +5,7 @@
     <title>WeatherNow</title>
     <link rel="stylesheet" type="text/css" href="resources/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/perceptions.js"></script>
+    <script src="js/adduser.js"></script>
 </head>
 <body>
 
@@ -25,11 +25,16 @@
     </table>
 </div>
 
-
-<div class="container" style="background-color: rgba(255,255,255, 0.9)">
-    <table id="perceptions">
-    </table>
+<div class="container">
+    New here? Add your username to be able to send perceptions for WeatherNow!
 </div>
 
+<div class="container">
+    <form>
+        Your WeatherNow username:<br><br>
+        <input type="text" id="username">
+        <input type="button" id="submit" value="Send">
+    </form>
+</div>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class WeatherController {
         return weatherService.getAllWeather();
     }
 
-    @RequestMapping(value = {"/createWeather"}, method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = {"/addWeather"}, method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public void addWeather(@RequestBody WeatherRequest weatherRequest) throws NoUserException, EmptyCategoryException, NoCategoryException, NoTownException, WeatherIDIsOccupiedException, UserNotExistException, TownNotExistException {
         Weather weather = null;
