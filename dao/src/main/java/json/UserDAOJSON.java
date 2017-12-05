@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dao.UserDAO;
 import exceptions.UserIDIsOccupiedException;
+import exceptions.UsernameAlreadyExsistException;
 import model.User;
 
 import java.io.File;
@@ -56,17 +57,26 @@ public class UserDAOJSON implements UserDAO {
     }
 
 
-    public void createUser(User user) throws UserIDIsOccupiedException {
+    public void createUser(User user) throws UserIDIsOccupiedException, UsernameAlreadyExsistException {
         Collection<User> users = getAllUser();
         boolean uniqueId = true;
+        boolean uniqueUsername = true;
         for(User u : users){
             if(u.getId() == user.getId()){
                 uniqueId = false;
             }
+            if(u.getName().equals(user.getName())){
+                uniqueUsername = false;
+            }
+
         }
         if(!uniqueId){
             throw new UserIDIsOccupiedException(String.valueOf(user.getId()));
         }
+        if(!uniqueUsername){
+            throw new UsernameAlreadyExsistException(user.getName());
+        }
+
         users.add(user);
         try {
             mapper.writeValue(jsonfile, users);
@@ -88,7 +98,7 @@ public class UserDAOJSON implements UserDAO {
                 }
             }
         }catch (MismatchedInputException e){
-            System.err.println("Empty file");
+            System.err.println("Empty file " + e);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -107,7 +117,7 @@ public class UserDAOJSON implements UserDAO {
                 }
             }
         }catch (MismatchedInputException e){
-            System.err.println("Empty file");
+            System.err.println("Empty file " +e);
         }
         catch (IOException e) {
             e.printStackTrace();

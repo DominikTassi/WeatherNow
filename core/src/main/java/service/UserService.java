@@ -2,13 +2,14 @@ package service;
 
 
 import exceptions.UserIDIsOccupiedException;
+import exceptions.UsernameAlreadyExsistException;
 import model.User;
 
 import java.util.Collection;
 
 public interface UserService {
 
-    void createUser(User user) throws UserIDIsOccupiedException;
+    void createUser(User user) throws UserIDIsOccupiedException, UsernameAlreadyExsistException;
 
     User getUser(int id) throws UserIDIsOccupiedException;
 

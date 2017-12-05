@@ -3,6 +3,7 @@ package controller;
 import com.example.myschema.UserRequest;
 import exceptions.NoUserException;
 import exceptions.UserIDIsOccupiedException;
+import exceptions.UsernameAlreadyExsistException;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,7 +49,7 @@ public class UserController {
 
     @RequestMapping(value = {"/addUser"}, method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void addUser(@RequestBody UserRequest userRequest) throws UserIDIsOccupiedException {
+    public void addUser(@RequestBody UserRequest userRequest) throws UserIDIsOccupiedException, UsernameAlreadyExsistException {
         User user = null;
         user = new User(userRequest.getUid(), userRequest.getUsername());
         userService.createUser(user);

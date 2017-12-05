@@ -38,7 +38,7 @@ public class WeatherController {
 
     @RequestMapping(value = {"/createWeather"}, method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void addWeather(@RequestBody WeatherRequest weatherRequest) throws NoUserException, EmptyCategoryException, NoCategoryException, NoTownException, WeatherIDIsOccupiedException {
+    public void addWeather(@RequestBody WeatherRequest weatherRequest) throws NoUserException, EmptyCategoryException, NoCategoryException, NoTownException, WeatherIDIsOccupiedException, UserNotExistException, TownNotExistException {
         Weather weather = null;
         weather = new Weather(weatherRequest.getWid(), new User(weatherRequest.getUid(), weatherRequest.getUsername()),
                 new Town(weatherRequest.getTid(), weatherRequest.getTown()), Enum.valueOf(Category.class, weatherRequest.getCategory()), weatherRequest.getTemperature());

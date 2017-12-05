@@ -51,7 +51,7 @@ public class TownDAOJSON implements TownDAO {
                 }
             }
         }catch (MismatchedInputException e){
-            System.err.println("Empty file");
+            System.err.println("Empty file " + e);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public class TownDAOJSON implements TownDAO {
             System.out.println(jsonfile.getAbsoluteFile());
             users = mapper.readValue(jsonfile, new TypeReference<HashSet<Town>>(){});
         }catch (MismatchedInputException e){
-            System.err.println("Empty file");
+            System.err.println("Empty file " +e);
         }
         catch (IOException e) {
             e.printStackTrace();

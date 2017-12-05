@@ -64,9 +64,9 @@ function validate() {
             var temperature = document.getElementById("temperature");
             var parameters = '{' +
                 '"id":'+dataWait+',' +
-                '"uid":' + TODO +',' +
+                '"uid":' + DUNNO +',' +
                 '"username":"' +username +'",' +
-                '"tid":'+ TODO + ',' +
+                '"tid":'+ DUNNO + ',' +
                 '"town":"'+town+'"' +
                 '"category":"'+category+'"'+
                 '"temperature":'+temperature

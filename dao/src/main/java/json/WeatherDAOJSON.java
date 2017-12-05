@@ -4,8 +4,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import dao.UserDAO;
 import dao.WeatherDAO;
+import exceptions.TownNotExistException;
+import exceptions.UserNotExistException;
 import exceptions.WeatherIDIsOccupiedException;
+import model.Town;
+import model.User;
 import model.Weather;
 
 import java.io.File;
@@ -45,20 +50,43 @@ public class WeatherDAOJSON implements WeatherDAO {
     }
 
 
-    public void createWeather(Weather weather) throws WeatherIDIsOccupiedException {
+    public void createWeather(Weather weather) throws WeatherIDIsOccupiedException, TownNotExistException, UserNotExistException {
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. LLLL dd. HH:mm");
         String formattedString = localDateTime.format(formatter);
         weather.setTime(formattedString);
         Collection<Weather> weathers = getAllWeather();
+        UserDAOJSON userDAOJSON = new UserDAOJSON(System.getProperty("users_json_file"));
+        TownDAOJSON townDAOJSON = new TownDAOJSON(System.getProperty("towns_json_file"));
+        Collection<User> users = userDAOJSON.getAllUser();
+        Collection<Town> towns = townDAOJSON.getAllTown();
         boolean uniqueId = true;
+        boolean notExistingUser = true;
+        boolean notExistingTown = true;
         for(Weather w : weathers){
             if(w.getId() == weather.getId()){
                 uniqueId = false;
             }
         }
+        for(User u: users){
+            if(u.equals(weather.getUser()))
+            {
+                notExistingUser = false;
+            }
+        }
+        for (Town t: towns){
+            if(t.equals(weather.getTown())){
+                notExistingTown = false;
+            }
+        }
         if(!uniqueId){
             throw new WeatherIDIsOccupiedException(String.valueOf(weather.getId()));
+        }
+        if(notExistingUser){
+            throw new UserNotExistException(weather.getUser().getName());
+        }
+        if(notExistingTown){
+            throw new TownNotExistException(weather.getTown().getName());
         }
         weathers.add(weather);
         try {

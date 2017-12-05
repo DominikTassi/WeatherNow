@@ -1,6 +1,8 @@
 package hu.app.service.impl;
 
 import dao.WeatherDAO;
+import exceptions.TownNotExistException;
+import exceptions.UserNotExistException;
 import exceptions.WeatherIDIsOccupiedException;
 import model.Category;
 import model.Weather;
@@ -16,7 +18,7 @@ public class WeatherServiceImpl implements WeatherService {
         this.weatherDAO = weatherDAO;
     }
 
-    public void createWeather(Weather weather) throws WeatherIDIsOccupiedException {
+    public void createWeather(Weather weather) throws WeatherIDIsOccupiedException, UserNotExistException, TownNotExistException {
         weatherDAO.createWeather(weather);
     }
 

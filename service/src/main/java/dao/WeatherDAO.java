@@ -1,12 +1,14 @@
 package dao;
 
+import exceptions.TownNotExistException;
+import exceptions.UserNotExistException;
 import exceptions.WeatherIDIsOccupiedException;
 import model.Weather;
 
 import java.util.Collection;
 
 public interface WeatherDAO {
-    public void createWeather(Weather weather) throws WeatherIDIsOccupiedException;
+    public void createWeather(Weather weather) throws WeatherIDIsOccupiedException, TownNotExistException, UserNotExistException;
 
     public Collection<Weather> getAllWeather();
 

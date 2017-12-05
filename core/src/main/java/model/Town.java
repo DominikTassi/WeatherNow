@@ -46,7 +46,13 @@ public class Town {
         Town town = (Town) o;
 
         if (id != town.id) return false;
-        return name.equals(town.name);
+        return name != null ? name.equals(town.name) : town.name == null;
     }
 
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
 }

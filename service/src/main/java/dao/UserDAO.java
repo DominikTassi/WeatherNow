@@ -2,13 +2,14 @@ package dao;
 
 
 import exceptions.UserIDIsOccupiedException;
+import exceptions.UsernameAlreadyExsistException;
 import model.User;
 
 import java.util.Collection;
 
 public interface UserDAO {
 
-    void createUser(User user)throws UserIDIsOccupiedException;
+    void createUser(User user)throws UserIDIsOccupiedException, UsernameAlreadyExsistException;
 
     User getUser(int id)throws UserIDIsOccupiedException;
 

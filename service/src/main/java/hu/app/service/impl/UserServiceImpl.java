@@ -2,6 +2,7 @@ package hu.app.service.impl;
 
 import dao.UserDAO;
 import exceptions.UserIDIsOccupiedException;
+import exceptions.UsernameAlreadyExsistException;
 import model.User;
 import service.UserService;
 
@@ -15,7 +16,7 @@ public class UserServiceImpl implements UserService {
         this.userDAO = userDAO;
     }
 
-    public void createUser(User user) throws UserIDIsOccupiedException {
+    public void createUser(User user) throws UserIDIsOccupiedException, UsernameAlreadyExsistException {
         userDAO.createUser(user);
     }
 
