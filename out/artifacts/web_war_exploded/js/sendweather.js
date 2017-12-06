@@ -1,40 +1,5 @@
-var name;
-var town;
-function loadUserId(name) {
-    var urlPath = "/wnTeszt/getUserIdByName/"+name;
-    $.ajax({
-        url: urlPath,
-        contentType: 'application/json',
-        success: function (data, textStatus, xhr) {
-            console.log(xhr.status);
-            console.log(data);
-        },
-        failure:function () {
-            console.log("fail");
-        },
-        error:function () {
-            console.log("error");
-        }
-    });
-}
-
-function loadTownId(town) {
-    var urlPath = "/wnTeszt/getTownIdByName/"+town;
-    $.ajax({
-        url: urlPath,
-        contentType: 'application/json',
-        success: function (data, textStatus, xhr) {
-            console.log(xhr.status);
-            console.log(data);
-        },
-        failure:function () {
-            console.log("fail");
-        },
-        error:function () {
-            console.log("error");
-        }
-    });
-}
+var nameId;
+var townId;
 
 function validate() {
     var username = document.getElementById("username");
@@ -83,23 +48,53 @@ function send() {
         return;
     var dataWait;
     $.ajax({
+        url: "/wnTeszt/getTownIdByName/" + username.value,
+        contentType: 'application/json',
+        success: function (data, textStatus, xhr) {
+            console.log(xhr.status);
+            console.log(data);
+            townId = data;
+            alert(townId);
+        },
+        failure:function () {
+            console.log("fail");
+        },
+        error:function () {
+            console.log("error");
+        }
+    });
+    $.ajax({
+        url: "/wnTeszt/getUserIdByName/" + town.value,
+        contentType: 'application/json',
+        success: function (data, textStatus, xhr) {
+            console.log(xhr.status);
+            console.log(data);
+            nameId = data;
+        },
+        failure:function () {
+            console.log("fail");
+        },
+        error:function () {
+            console.log("error");
+        }
+    });
+    $.ajax({
         type: "GET",
         url: "/wnTeszt/getNextWeatherId",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
             dataWait = data;
-
             var username = document.getElementById("username").value;
             var town = document.getElementById("town").value;
             var category = document.getElementsByName("category").value;
             var temperature = document.getElementById("temperature").value;
             var parameters = '{' +
                 '"wid":' + dataWait + ',' +
-                '"uid":' + loadUserId(username) + ',' +
+                '"uid":' + nameId + ',' +
                 '"username":"' + username + '",' +
-                '"tid":' + loadTownId(town) + ',' +
-                '"town":"' + town + '"' +
+                '"tid":' + townId + ',' +
+                '"town":"' + town + '",' +
                 '"category":"' + category + '"' +
                 '"temperature":' + temperature +
             '}';
