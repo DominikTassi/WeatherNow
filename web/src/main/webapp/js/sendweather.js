@@ -1,5 +1,29 @@
 var nameId;
 var townId;
+function loadUserId(name) {
+    var urlPath = "/wnTeszt/getUserIdByName/"+name;
+
+}
+
+function loadTownId(town) {
+    var urlPath = "/wnTeszt/getTownIdByName/"+town;
+    $.ajax({
+        url: urlPath,
+        contentType: 'application/json',
+        success: function (data, textStatus, xhr) {
+            console.log(xhr.status);
+            console.log(data);
+            return data;
+            alert(data);
+        },
+        failure:function () {
+            console.log("fail");
+        },
+        error:function () {
+            console.log("error");
+        }
+    });
+}
 
 function validate() {
     var username = document.getElementById("username");
@@ -42,42 +66,12 @@ function validate() {
     }
 }
 
-
 function send() {
+    var userid;
+    var townid;
     if (validate() == false)
         return;
     var dataWait;
-    $.ajax({
-        url: "/wnTeszt/getTownIdByName/" + username.value,
-        contentType: 'application/json',
-        success: function (data, textStatus, xhr) {
-            console.log(xhr.status);
-            console.log(data);
-            townId = data;
-            alert(townId);
-        },
-        failure:function () {
-            console.log("fail");
-        },
-        error:function () {
-            console.log("error");
-        }
-    });
-    $.ajax({
-        url: "/wnTeszt/getUserIdByName/" + town.value,
-        contentType: 'application/json',
-        success: function (data, textStatus, xhr) {
-            console.log(xhr.status);
-            console.log(data);
-            nameId = data;
-        },
-        failure:function () {
-            console.log("fail");
-        },
-        error:function () {
-            console.log("error");
-        }
-    });
     $.ajax({
         type: "GET",
         url: "/wnTeszt/getNextWeatherId",
@@ -86,14 +80,30 @@ function send() {
         success: function (data) {
             dataWait = data;
             var username = document.getElementById("username").value;
+            $.ajax({
+                url: "/wnTeszt/getUserIdByName/" + username,
+                contentType: 'application/json',
+                success: function (data, textStatus, xhr) {
+                    console.log(xhr.status);
+                    console.log(data);
+                    userid = data;
+                    alert(data);
+                },
+                failure:function () {
+                    console.log("fail");
+                },
+                error:function () {
+                    console.log("error");
+                }
+            });
             var town = document.getElementById("town").value;
             var category = document.getElementsByName("category").value;
             var temperature = document.getElementById("temperature").value;
             var parameters = '{' +
                 '"wid":' + dataWait + ',' +
-                '"uid":' + nameId + ',' +
+                '"uid":' + userid + ',' +
                 '"username":"' + username + '",' +
-                '"tid":' + townId + ',' +
+                '"tid":' + townid + ',' +
                 '"town":"' + town + '",' +
                 '"category":"' + category + '"' +
                 '"temperature":' + temperature +

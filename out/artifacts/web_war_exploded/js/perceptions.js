@@ -42,9 +42,6 @@ function loadWeather() {
             resultTarget.html("");
             buildHtmlTable(resultTarget, data);
             addAllColumnHeaders(data, selector);
-
-
-
         },
         failure:function () {
             console.log("fail");

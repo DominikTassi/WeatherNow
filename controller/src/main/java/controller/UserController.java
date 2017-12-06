@@ -54,7 +54,7 @@ public class UserController {
         userService.createUser(user);
     }
 
-    @RequestMapping(value = "/getUserIdByName/{username}", method = RequestMethod.GET, produces = {"application/json"})
+    @RequestMapping(value = "/getUserIdByName/{username}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public int getUserIdByName(@PathVariable(value = "username") String username) throws UserNotExistException, UserIDIsOccupiedException {
