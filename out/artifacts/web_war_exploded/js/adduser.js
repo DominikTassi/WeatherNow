@@ -6,39 +6,41 @@ function validate() {
         username.style.color = "snow";
         return false;
     }
-    else{
+    else {
         username.style.backgroundColor = "green";
         username.style.color = "snow";
     }
-    $(document).ready(function () {
-        var dataWait;
+}
+function test() {
+    var dataWait;
+    $.ajax({
+        type: "GET",
+        url: "/getAllUser",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            dataWait = data;
+        },
+        failure: function (errMsg) {
+            alert(errMsg);
+        }
+    });
+        if (validate() == false)
+            return;
+        var username = document.getElementById("username");
+        var parmeters = '{"uid":' + dataWait
+        ',"username":"' + username + '"}';
         $.ajax({
-            type: "GET",
-            url: "/getAllUser",
+            type: "POST",
+            url: "/addUser",
+            data: parameters,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function(data){dataWait = data;},
-            failure: function(errMsg) {
+            success: function (data) {
+                window.location.href = "succes.html";
+            },
+            failure: function (errMsg) {
                 alert(errMsg);
             }
         });
-        $("#submit").click(function() {
-            if (validate() == false)
-                return;
-            var username = document.getElementById("username");
-            var parmeters = '{"uid":' + dataWait
-            ',"username":"' + username + '"}';
-            $.ajax({
-                type: "POST",
-                url: "/addUser",
-                data: parameters,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    window.location.href = "succes.html";
-                },
-                failure: function (errMsg) {
-                    alert(errMsg);
-                }
-            });
-        }
+}
