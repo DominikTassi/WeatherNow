@@ -44,4 +44,11 @@ public class WeatherController {
                 new Town(weatherRequest.getTid(), weatherRequest.getTown()), Enum.valueOf(Category.class, weatherRequest.getCategory()), weatherRequest.getTemperature());
         weatherService.createWeather(weather);
     }
+
+    @RequestMapping(value = "/getNextWeatherId", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public int getMaxWeatherId(){
+        return weatherService.getMaxWeatherId()+1;
+    }
 }

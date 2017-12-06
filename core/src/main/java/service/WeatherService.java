@@ -18,4 +18,6 @@ public interface WeatherService {
 
     public void deleteWeather(int i) throws WeatherIDIsOccupiedException;
     public void deleteWeather(Weather weather) throws WeatherIDIsOccupiedException;
+
+    public int getMaxWeatherId();
 }

@@ -1,6 +1,8 @@
 package json;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -40,17 +42,16 @@ public class UserDAOJSON implements UserDAO {
     }
 
 
-
     @Override
     public Collection<User> getAllUser() {
         Collection<User> users = new HashSet<User>();
         try {
             System.out.println(jsonfile.getAbsoluteFile());
-            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
-        }catch (MismatchedInputException e){
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>() {
+            });
+        } catch (MismatchedInputException e) {
             System.err.println("Empty file");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return users;
@@ -61,19 +62,19 @@ public class UserDAOJSON implements UserDAO {
         Collection<User> users = getAllUser();
         boolean uniqueId = true;
         boolean uniqueUsername = true;
-        for(User u : users){
-            if(u.getId() == user.getId()){
+        for (User u : users) {
+            if (u.getId() == user.getId()) {
                 uniqueId = false;
             }
-            if(u.getName().equals(user.getName())){
+            if (u.getName().equals(user.getName())) {
                 uniqueUsername = false;
             }
 
         }
-        if(!uniqueId){
+        if (!uniqueId) {
             throw new UserIDIsOccupiedException(String.valueOf(user.getId()));
         }
-        if(!uniqueUsername){
+        if (!uniqueUsername) {
             throw new UsernameAlreadyExsistException(user.getName());
         }
 
@@ -90,75 +91,102 @@ public class UserDAOJSON implements UserDAO {
     @Override
     public User getUser(int id) throws UserIDIsOccupiedException {
         Collection<User> users = new HashSet<User>();
-        try{
-            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
-            for(User u: users){
-                if (u.getId() == id){
+        try {
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>() {
+            });
+            for (User u : users) {
+                if (u.getId() == id) {
                     return u;
                 }
             }
-        }catch (MismatchedInputException e){
+        } catch (MismatchedInputException e) {
             System.err.println("Empty file " + e);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }throw new UserIDIsOccupiedException(String.valueOf(id));
+        }
+        throw new UserIDIsOccupiedException(String.valueOf(id));
     }
 
 
     @Override
     public User getUser(String name) throws UserIDIsOccupiedException {
         Collection<User> users = new HashSet<User>();
-        try{
-            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
-            for(User u: users){
-                if (u.getName().equalsIgnoreCase(name)){
+        try {
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>() {
+            });
+            for (User u : users) {
+                if (u.getName().equalsIgnoreCase(name)) {
                     return u;
                 }
             }
-        }catch (MismatchedInputException e){
-            System.err.println("Empty file " +e);
-        }
-        catch (IOException e) {
+        } catch (MismatchedInputException e) {
+            System.err.println("Empty file " + e);
+        } catch (IOException e) {
             e.printStackTrace();
-        }throw new UserIDIsOccupiedException(name);
+        }
+        throw new UserIDIsOccupiedException(name);
     }
 
     @Override
     public boolean deleteUser(int id) throws UserIDIsOccupiedException {
         Collection<User> users = getAllUser();
-        try{
-            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
-            for(User u: users){
-                if (u.getId() == id){
+        try {
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>() {
+            });
+            for (User u : users) {
+                if (u.getId() == id) {
                     users.remove(u);
                     return true;
                 }
             }
-        }catch (MismatchedInputException e){
+        } catch (MismatchedInputException e) {
             System.err.println("Empty file");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }throw new UserIDIsOccupiedException(String.valueOf(id));
+        }
+        throw new UserIDIsOccupiedException(String.valueOf(id));
     }
 
     @Override
     public boolean deleteUser(User user) throws UserIDIsOccupiedException {
         Collection<User> users = getAllUser();
-        try{
-            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>(){});
-            for(User u: users){
-                if (u.equals(user)){
+        try {
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>() {
+            });
+            for (User u : users) {
+                if (u.equals(user)) {
                     users.remove(u);
                     return true;
                 }
             }
-        }catch (MismatchedInputException e){
+        } catch (MismatchedInputException e) {
             System.err.println("Empty file");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }throw new UserIDIsOccupiedException(String.valueOf(user.getId()));
+        }
+        throw new UserIDIsOccupiedException(String.valueOf(user.getId()));
     }
-}
+
+    @Override
+    public int getMaxId() {
+        Collection<User> users = getAllUser();
+        int maxId = 0;
+        try {
+            users = mapper.readValue(jsonfile, new TypeReference<HashSet<User>>() {
+            });
+
+            for (User u : users) {
+                if (u.getId() > maxId) {
+                    maxId = u.getId();
+                }
+            }
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return maxId;
+        }
+    }

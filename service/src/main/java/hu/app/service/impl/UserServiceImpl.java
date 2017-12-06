@@ -41,4 +41,9 @@ public class UserServiceImpl implements UserService {
         return userDAO.deleteUser(user);
     }
 
+    @Override
+    public int getMaxId() {
+        return userDAO.getMaxId();
+    }
+
 }

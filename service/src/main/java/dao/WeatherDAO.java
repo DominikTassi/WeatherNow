@@ -16,4 +16,6 @@ public interface WeatherDAO {
 
     public boolean deleteWeather(int i) throws WeatherIDIsOccupiedException;
     public boolean deleteWeather(Weather weather) throws WeatherIDIsOccupiedException;
+
+    public int getMaxWeatherId();
 }

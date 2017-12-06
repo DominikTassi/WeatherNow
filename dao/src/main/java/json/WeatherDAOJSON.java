@@ -1,6 +1,8 @@
 package json;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -167,5 +169,26 @@ public class WeatherDAOJSON implements WeatherDAO {
         catch (IOException e) {
             e.printStackTrace();
         }throw new WeatherIDIsOccupiedException(String.valueOf(weather.getId()));
+    }
+
+    @Override
+    public int getMaxWeatherId() {
+        Collection<Weather> weathers = getAllWeather();
+        int maxId = 0;
+        try{
+            weathers = mapper.readValue(jsonfile, new TypeReference<HashSet<Weather>>(){});
+            for(Weather w: weathers){
+                if (w.getId() < maxId){
+                        maxId = w.getId();
+                    }
+                }
+            } catch (JsonParseException e1) {
+            e1.printStackTrace();
+        } catch (JsonMappingException e1) {
+            e1.printStackTrace();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        return maxId;
     }
 }

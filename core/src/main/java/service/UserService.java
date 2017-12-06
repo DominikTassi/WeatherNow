@@ -21,4 +21,6 @@ public interface UserService {
 
     boolean deleteUser(User user) throws UserIDIsOccupiedException;
 
+    int getMaxId();
+
 }

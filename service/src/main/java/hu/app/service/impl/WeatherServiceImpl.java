@@ -37,4 +37,9 @@ public class WeatherServiceImpl implements WeatherService {
     public void deleteWeather(Weather weather) throws WeatherIDIsOccupiedException {
         weatherDAO.deleteWeather(weather);
     }
+
+    @Override
+    public int getMaxWeatherId() {
+        return weatherDAO.getMaxWeatherId()+1;
+    }
 }

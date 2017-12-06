@@ -1,7 +1,7 @@
 var name;
 var town;
 function loadUserId(name) {
-    var urlPath = "getUserIdByUserName/"+name;
+    var urlPath = "/wnTeszt/getUserIdByName/"+name;
     $.ajax({
         url: urlPath,
         contentType: 'application/json',
@@ -19,7 +19,7 @@ function loadUserId(name) {
 }
 
 function loadTownId(town) {
-    var urlPath = "getTownIdByName/"+town;
+    var urlPath = "/wnTeszt/getTownIdByName/"+town;
     $.ajax({
         url: urlPath,
         contentType: 'application/json',
@@ -47,7 +47,7 @@ function validate() {
         username.style.color = "snow";
         return false;
     }
-    else{
+    else {
         username.style.backgroundColor = "green";
         username.style.color = "snow";
     }
@@ -57,19 +57,13 @@ function validate() {
         town.style.color = "snow";
         return false;
     }
-    else{
+    else {
         town.style.backgroundColor = "green";
         town.style.color = "snow";
     }
     if (category.value == "") {
-        category.style.backgroundColor = "red";
-        document.getElementById("category").placeholder = "Category is needed";
-        category.style.color = "snow";
+        alert("Category is needed")
         return false;
-    }
-    else{
-        category.style.backgroundColor = "green";
-        category.style.color = "snow";
     }
     if (temperature.value == "") {
         temperature.style.backgroundColor = "red";
@@ -77,49 +71,54 @@ function validate() {
         category.style.color = "snow";
         return false;
     }
-    else{
+    else {
         temperature.style.backgroundColor = "green";
         temperature.style.color = "snow";
     }
-    $(document).ready(function () {
-        var dataWait;
-        $.ajax({
-            type: "GET",
-            url: "/getAllWeather",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data){dataWait = data;},
-            failure: function(errMsg) {
-                alert(errMsg);
-            }
-        });
-        $("#submit").click(function(){
-            if(validate() == false)
-                return;
-            var username = document.getElementById("username");
-            var town = document.getElementById("town");
-            var category = document.getElementsByName("category");
-            var temperature = document.getElementById("temperature");
+}
+
+
+function send() {
+    if (validate() == false)
+        return;
+    var dataWait;
+    $.ajax({
+        type: "GET",
+        url: "/wnTeszt/getNextWeatherId",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            dataWait = data;
+
+            var username = document.getElementById("username").value;
+            var town = document.getElementById("town").value;
+            var category = document.getElementsByName("category").value;
+            var temperature = document.getElementById("temperature").value;
             var parameters = '{' +
-                '"wid":'+dataWait+',' +
-                '"uid":' + loadUserId(username) +',' +
-                '"username":"' +username +'",' +
-                '"tid":'+ loadTownId(town) + ',' +
-                '"town":"'+town+'"' +
-                '"category":"'+category+'"'+
-                '"temperature":'+temperature
-                '}';
+                '"wid":' + dataWait + ',' +
+                '"uid":' + loadUserId(username) + ',' +
+                '"username":"' + username + '",' +
+                '"tid":' + loadTownId(town) + ',' +
+                '"town":"' + town + '"' +
+                '"category":"' + category + '"' +
+                '"temperature":' + temperature +
+            '}';
             $.ajax({
                 type: "POST",
-                url: "addWeather",
+                url: "/wnTeszt/addWeather",
                 data: parameters,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function(data){window.location.href = "succes.html";},
-                failure: function(errMsg) {
+                success: function (data) {
+                    window.location.href = "succes.html";
+                },
+                failure: function (errMsg) {
                     alert(errMsg);
                 }
             });
-        });
+        },
+        failure: function (errMsg) {
+            alert(errMsg);
+        }
     });
 }

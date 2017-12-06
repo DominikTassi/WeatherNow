@@ -13,34 +13,35 @@ function validate() {
 }
 function test() {
     var dataWait;
+    if (validate() == false)
+        return;
     $.ajax({
         type: "GET",
-        url: "/getAllUser",
+        url: "/wnTeszt/getNextUserId",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
             dataWait = data;
+            var username = document.getElementById("username").value;
+            alert(username + " was added to WeatherNow");
+            var parameters = '{"uid":' + dataWait +
+                ',"username":"' + username + '"}';
+            $.ajax({
+                type: "POST",
+                url: "/wnTeszt/addUser",
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    window.location.href = "succes.html";
+                },
+                failure: function (errMsg) {
+                    alert(errMsg);
+                }
+            });
         },
         failure: function (errMsg) {
             alert(errMsg);
         }
     });
-        if (validate() == false)
-            return;
-        var username = document.getElementById("username");
-        var parmeters = '{"uid":' + dataWait
-        ',"username":"' + username + '"}';
-        $.ajax({
-            type: "POST",
-            url: "/addUser",
-            data: parameters,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                window.location.href = "succes.html";
-            },
-            failure: function (errMsg) {
-                alert(errMsg);
-            }
-        });
 }
