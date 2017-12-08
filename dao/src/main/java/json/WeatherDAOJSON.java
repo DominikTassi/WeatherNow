@@ -178,7 +178,7 @@ public class WeatherDAOJSON implements WeatherDAO {
         try{
             weathers = mapper.readValue(jsonfile, new TypeReference<HashSet<Weather>>(){});
             for(Weather w: weathers){
-                if (w.getId() < maxId){
+                if (w.getId() > maxId){
                         maxId = w.getId();
                     }
                 }

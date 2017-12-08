@@ -40,6 +40,6 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public int getMaxWeatherId() {
-        return weatherDAO.getMaxWeatherId()+1;
+        return weatherDAO.getMaxWeatherId();
     }
 }
