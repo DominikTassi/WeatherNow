@@ -1,6 +1,5 @@
 function validate() {
     var username = document.getElementById("username");
-    var town = document.getElementById("town");
     var temperature = document.getElementById("temperature");
     if (username.value == "") {
         username.style.backgroundColor = "red";
@@ -11,16 +10,6 @@ function validate() {
     else {
         username.style.backgroundColor = "green";
         username.style.color = "snow";
-    }
-    if (town.value == "") {
-        town.style.backgroundColor = "red";
-        document.getElementById("town").placeholder = "Add the perception's town";
-        town.style.color = "snow";
-        return false;
-    }
-    else {
-        town.style.backgroundColor = "green";
-        town.style.color = "snow";
     }
     if (category.value == "") {
         alert("Category is needed")
@@ -117,10 +106,25 @@ function add(weatherid, userid, townid) {
         dataType: "json",
         success: function (data) {
             window.location.href = "succes.html";
+            alert("Your perception has been added to WeatherNow!")
         },
         failure: function (errMsg) {
             alert(errMsg);
         }
     });
 }
+
+
+
+$.ajax({
+    url:'getAllTown',
+    type:'GET',
+    contentType: "application/json; charset=utf-8",
+    dataType: 'json',
+    success: function( json ) {
+        $.each(json, function(i, value) {
+            $('#town').append($('<option>').text(json[i]["name"]).attr('value', json[i]["name"]));
+        });
+    }
+});
 

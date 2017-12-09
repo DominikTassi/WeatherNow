@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import service.TownService;
 
+import java.util.Collection;
+
 @Controller
 public class TownController {
     TownService townService;
@@ -28,5 +30,12 @@ public class TownController {
     @ResponseBody
     public int getTownIdByName(@PathVariable(value = "name") String name )throws TownNotFoundException {
         return townService.getTown(name).getId();
+    }
+
+    @RequestMapping(value = "/getAllTown", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Collection<Town> getAllTown()throws TownNotFoundException {
+        return townService.getAllTown();
     }
 }
