@@ -5,6 +5,9 @@ function buildHtmlTable(selector, myList) {
         var row$ = $('<tr/>');
         for (var colIndex = 0; colIndex < columns.length; colIndex++) {
             var cellValue = myList[i][columns[colIndex]];
+            if (cellValue == myList[i]["temperature"]) cellValue = myList[i]["temperature"] + " °C";
+            if (cellValue == myList[i]["user"]) cellValue = myList[i]["user"]["name"];
+            if (cellValue == myList[i]["town"]) cellValue = myList[i]["town"]["name"];
             if (cellValue == null) cellValue = "";
             row$.append($('<td/>').html(cellValue));
         }
