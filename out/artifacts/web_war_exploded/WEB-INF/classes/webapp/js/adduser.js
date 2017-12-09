@@ -17,7 +17,7 @@ function test() {
         return;
     $.ajax({
         type: "GET",
-        url: "/wnTeszt/getNextUserId",
+        url: "getNextUserId",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -28,7 +28,7 @@ function test() {
                 ',"username":"' + username + '"}';
             $.ajax({
                 type: "POST",
-                url: "/wnTeszt/addUser",
+                url: "addUser",
                 data: parameters,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

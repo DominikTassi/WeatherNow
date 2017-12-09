@@ -13,6 +13,7 @@ body{
     color: #3F9DD5;
     margin-bottom: 10%;
     text-align: left;
+    z-index: 950;
 }
 .NavbarOnTopMenu{
     position: fixed;
@@ -32,6 +33,7 @@ a{
     justify-content: center;
     margin-top: 6%;
     text-align: center;
+    z-index: 900;
 }
 
 .navbarContainer{

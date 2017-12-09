@@ -44,7 +44,7 @@ function send() {
     var dataWait;
     $.ajax({
         type: "GET",
-        url: "/wnTeszt/getNextWeatherId",
+        url: "getNextWeatherId",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -63,14 +63,14 @@ function getIds(weatherId,username,town) {
     var userid;
     var townid;
     $.ajax({
-        url: "/wnTeszt/getUserIdByName/" + username,
+        url: "getUserIdByName/" + username,
         contentType: 'application/json',
         success: function (data, textStatus, xhr) {
             console.log(xhr.status);
             console.log(data);
             userid = data;
             $.ajax({
-                url: "/wnTeszt/getTownIdByName/" + town,
+                url: "getTownIdByName/" + town,
                 contentType: 'application/json',
                 success: function (data, textStatus, xhr) {
                     console.log(xhr.status);
@@ -111,7 +111,7 @@ function add(weatherid, userid, townid) {
         '}';
     $.ajax({
         type: "POST",
-        url: "/wnTeszt/addWeather",
+        url: "addWeather",
         data: parameters,
         contentType: "application/json; charset=utf-8",
         dataType: "json",

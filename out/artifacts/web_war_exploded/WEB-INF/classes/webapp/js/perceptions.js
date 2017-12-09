@@ -5,7 +5,6 @@ function buildHtmlTable(selector, myList) {
         var row$ = $('<tr/>');
         for (var colIndex = 0; colIndex < columns.length; colIndex++) {
             var cellValue = myList[i][columns[colIndex]];
-            if(myList[i][columns] === 'user') cellValue = myList[i][columns[user[name]]];
             if (cellValue == null) cellValue = "";
             row$.append($('<td/>').html(cellValue));
         }
