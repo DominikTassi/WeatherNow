@@ -16,6 +16,7 @@ import service.WeatherService;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 
 @Controller
@@ -32,7 +33,8 @@ public class WeatherController {
 
     @RequestMapping(value = "/getAllWeather", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody Collection<Weather> getAllWeather(){
+    public @ResponseBody
+    List<Weather> getAllWeather(){
         return weatherService.getAllWeather();
     }
 

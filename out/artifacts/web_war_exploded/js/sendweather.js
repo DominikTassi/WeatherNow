@@ -11,10 +11,6 @@ function validate() {
         username.style.backgroundColor = "green";
         username.style.color = "snow";
     }
-    if (category.value == "") {
-        alert("Category is needed")
-        return false;
-    }
     if (temperature.value == "") {
         temperature.style.backgroundColor = "red";
         document.getElementById("temperature").placeholder = "Temperature is needed";

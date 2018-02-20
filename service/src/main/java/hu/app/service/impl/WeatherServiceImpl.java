@@ -4,12 +4,12 @@ import dao.WeatherDAO;
 import exceptions.TownNotExistException;
 import exceptions.UserNotExistException;
 import exceptions.WeatherIDIsOccupiedException;
-import model.Category;
 import model.Weather;
 import service.WeatherService;
 
 
 import java.util.Collection;
+import java.util.List;
 
 public class WeatherServiceImpl implements WeatherService {
     private WeatherDAO weatherDAO = null;
@@ -22,7 +22,7 @@ public class WeatherServiceImpl implements WeatherService {
         weatherDAO.createWeather(weather);
     }
 
-    public Collection<Weather> getAllWeather() {
+    public List<Weather> getAllWeather() {
       return  weatherDAO.getAllWeather();
     }
 

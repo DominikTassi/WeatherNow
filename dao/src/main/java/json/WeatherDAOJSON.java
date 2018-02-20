@@ -22,8 +22,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.*;
 
 public class WeatherDAOJSON implements WeatherDAO {
 
@@ -99,17 +98,18 @@ public class WeatherDAOJSON implements WeatherDAO {
     }
 
     @Override
-    public Collection<Weather> getAllWeather() {
-        Collection<Weather> weathers = new HashSet<Weather>();
+    public List<Weather> getAllWeather() {
+        List<Weather> weathers = new ArrayList<>();
         try {
             System.out.println(jsonfile.getAbsoluteFile());
-            weathers = mapper.readValue(jsonfile, new TypeReference<HashSet<Weather>>(){});
+            weathers = mapper.readValue(jsonfile, new TypeReference<List<Weather>>(){});
         }catch (MismatchedInputException e){
             System.err.println("Empty file" + e);
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+        Collections.reverse(weathers);
         return weathers;
     }
 
